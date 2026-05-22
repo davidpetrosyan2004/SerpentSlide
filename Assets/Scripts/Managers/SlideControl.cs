@@ -23,7 +23,6 @@ public class SlideControl : MonoBehaviour
 
     private void OnFingerTap(Vector2 screenPosition)
     {
-        Debug.Log("Set pOs");
         _slidable = null;
 
         if (_inputRaycastDetector.TryGetRaycastTarget(screenPosition, out ISlidable slidable, out RaycastHit _))

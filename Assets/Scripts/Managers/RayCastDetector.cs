@@ -22,6 +22,7 @@ public class RayCastDetector : MonoBehaviour
 
     private void Awake()
     {
+        _camera = FindAnyObjectByType<Camera>();
         Assert.IsNotNull(_camera, "Camera reference is not set on InputRaycastHelper.");
     }
 

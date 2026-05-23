@@ -24,12 +24,14 @@ public class SlideControl : MonoBehaviour
     private void OnFingerTap(Vector2 screenPosition)
     {
         _slidable = null;
-
-        if (_inputRaycastDetector.TryGetRaycastTarget(screenPosition, out ISlidable slidable, out RaycastHit _))
+        Collider targetCollider = null;
+        RaycastHit _ = default;
+        if (_inputRaycastDetector.TryGetRaycastTarget(screenPosition, out ISlidable slidable, out _))
         {
             _slidable = slidable;
+            targetCollider = _.collider;
             _lastWorldPosition = _inputRaycastDetector.GetWorldPositionOnInputPlane(screenPosition);
-            _slidable.OnSlideStart(_lastWorldPosition);
+            _slidable.OnSlideStart(targetCollider, _lastWorldPosition);
         }
     }
     private void OnFingerMove(Vector2 screenPosition)

@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 1611116389196998663}
   - component: {fileID: 3780941941982668789}
   - component: {fileID: 3493966967588529129}
-  - component: {fileID: 3308256985603844876}
+  - component: {fileID: 1759873372973477451}
   m_Layer: 3
   m_Name: Tail
-  m_TagString: Untagged
+  m_TagString: Tail
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,7 +113,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3308256985603844876
+--- !u!114 &1759873372973477451
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

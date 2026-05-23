@@ -20,8 +20,8 @@ public class Snake : MonoBehaviour
         HeadPrefab = Instantiate(headPrefab, transform.position, Quaternion.identity, transform);
         for (int i = 0; i < snakeData.snakeLength; i++) 
         {
-            BodyParts.Add(Instantiate(bodyPrefab, HeadPrefab.position - new Vector3(1, 0, 0) * i, HeadPrefab.rotation, transform));
+            BodyParts.Add(Instantiate(bodyPrefab, HeadPrefab.position - new Vector3(1, 0, 0) * (i+1), HeadPrefab.rotation));
         }
-        //TailPrefab = Instantiate(tailPrefab, BodyParts[BodyParts.Count - 1].position - new Vector3(1, 0, 0), HeadPrefab.rotation, transform);
+        TailPrefab = Instantiate(tailPrefab, BodyParts[BodyParts.Count - 1].position - new Vector3(1, 0, 0), HeadPrefab.rotation);
     }
 }

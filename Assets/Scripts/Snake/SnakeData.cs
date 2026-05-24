@@ -14,6 +14,7 @@ public class SnakeData : ScriptableObject
     public class Cell
     {
         public CellType type;
+        public int indexBody;
     }
 
     [System.Serializable]
@@ -39,6 +40,7 @@ public class SnakeData : ScriptableObject
             for (int i = 0; i < column.Length; i++)
             {
                 column[i].type = CellType.E;
+                column[i].indexBody = -1; 
             }
         }
     }

@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine.UIElements;
 public class Snake : MonoBehaviour
 {
     [Header("Prefabs")]
@@ -23,6 +24,7 @@ public class Snake : MonoBehaviour
 
     private void Awake()
     {
+        int lastIndex = int.MinValue;
         for (int i = 0; i < snakeData.rows; i++)
         {
             for (int j = 0; j < snakeData.columns; j++)
@@ -32,8 +34,10 @@ public class Snake : MonoBehaviour
                     HeadPrefab = Instantiate(headPrefab, gridTiles.GetTileWorldPosition(new Vector3Int(i- width/2-1, 0, j- height/2-1)).Value.Item1, Quaternion.identity, transform);
                 }
                 else if (snakeData.board[i].column[j].type == SnakeData.CellType.B)
-                {
-                    BodyParts.Add(Instantiate(bodyPrefab, gridTiles.GetTileWorldPosition(new Vector3Int(i- width/2-1, 0, j- height/2-1)).Value.Item1, Quaternion.identity, transform));
+                { 
+                    var bodyPart = Instantiate(bodyPrefab, gridTiles.GetTileWorldPosition(new Vector3Int(i - width / 2 - 1, 0, j - height / 2 - 1)).Value.Item1, Quaternion.identity, transform);
+                    bodyPart.GetComponent<BodyPart>().index = snakeData.board[i].column[j].indexBody;
+                    BodyParts.Add(bodyPart);
                 }
                 else if (snakeData.board[i].column[j].type == SnakeData.CellType.T)
                 {
@@ -41,6 +45,7 @@ public class Snake : MonoBehaviour
                 }
             }
         }
+        BodyParts.Sort((a, b) => a.GetComponent<BodyPart>().index.CompareTo(b.GetComponent<BodyPart>().index));
         BodyParts.Add(TailPrefab);
     }
 }

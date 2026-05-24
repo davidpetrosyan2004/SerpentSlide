@@ -107,7 +107,7 @@ public class SnakeDataDrawer : Editor
 {
     private SnakeData Data => (SnakeData)target;
     private SnakeData.CellType selectedType;
-    private int selectedRotation;
+    private int selectedIndexBody;
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
@@ -154,6 +154,12 @@ public class SnakeDataDrawer : Editor
             "BodyPart",
             selectedType
         );
+        selectedIndexBody = EditorGUILayout.IntPopup(
+            "BodyPart",
+            selectedIndexBody,
+            new string[] { "0", "1", "2", "3", "4", "5", "6" },
+            new int[] { 0, 1, 2, 3, 4, 5, 6 }
+        );
     }
 
     private void DrawButtons()
@@ -190,13 +196,14 @@ public class SnakeDataDrawer : Editor
                 if (GUILayout.Button("", GUILayout.Width(size), GUILayout.Height(size)))
                 {
                     Data.board[row].column[col].type = selectedType;
+                    Data.board[row].column[col].indexBody = selectedIndexBody;
                 }
 
                 GUI.color = old;
 
                 GUI.Label(
                     GUILayoutUtility.GetLastRect(),
-                    cell.type.ToString(),
+                    cell.indexBody.ToString(),
                     new GUIStyle
                     {
                         alignment = TextAnchor.MiddleCenter,

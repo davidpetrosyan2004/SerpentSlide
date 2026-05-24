@@ -144,10 +144,6 @@ public class SnakeControler : MonoBehaviour, ISlidable
             //Debug.Log($"Current path count: {currentPath.Count}, Positions history count: {positionsHistory.Count}");
             MoveBodyParts();
         }
-        else
-        {
-            //Debug.Log("Current path count: 0");
-        }
     }
 
     public (Vector3, Vector3Int)? GetTargetTileAndPosition(Vector3 worldPosition)

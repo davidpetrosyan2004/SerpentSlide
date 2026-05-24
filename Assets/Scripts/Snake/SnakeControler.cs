@@ -38,7 +38,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
         {
             snake.BodyParts.Remove(snake.HeadPrefab);
             if (!snake.BodyParts.Contains(snake.TailPrefab)) {
-            snake.BodyParts.Reverse();
+                snake.BodyParts.Reverse();
                 snake.BodyParts.Add(snake.TailPrefab);
             }
 

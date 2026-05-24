@@ -28,6 +28,6 @@ public class Snake : MonoBehaviour
             BodyParts.Add(Instantiate(bodyPrefab, HeadPrefab.position - new Vector3(1, 0, 0) * (i + 1), HeadPrefab.rotation));
         }
         TailPrefab = Instantiate(tailPrefab, BodyParts[BodyParts.Count - 1].position - new Vector3(1, 0, 0), HeadPrefab.rotation, transform);
-        //BodyParts.Add(TailPrefab);
+        BodyParts.Add(TailPrefab);
     }
 }

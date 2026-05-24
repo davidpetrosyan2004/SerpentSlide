@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65dcdfab6de586f4c84535d8c62035fd, type: 3}
   m_Name: Snake Yellow 4
   m_EditorClassIdentifier: Assembly-CSharp::SnakeData
-  snakeLength: 4
+  snakeLength: 2
   snakeColor: 0

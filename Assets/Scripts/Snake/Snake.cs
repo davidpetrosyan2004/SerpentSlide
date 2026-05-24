@@ -7,9 +7,12 @@ public class Snake : MonoBehaviour
     [SerializeField] private Transform headPrefab;
     [SerializeField] private Transform tailPrefab;
 
+    [Header("References")]
+    [SerializeField] private GridTiles gridTiles;
 
     [Header("Data")]
     [SerializeField] private SnakeData snakeData;
+    [SerializeField] private Vector3Int spawnPos;
 
     public List<Transform> BodyParts { get; set; } = new();
     public Transform HeadPrefab { get; set; }
@@ -17,11 +20,14 @@ public class Snake : MonoBehaviour
 
     private void Awake()
     {
-        HeadPrefab = Instantiate(headPrefab, transform.position, Quaternion.identity, transform);
-        for (int i = 0; i < snakeData.snakeLength; i++) 
+        var spawnWorldPos = gridTiles.tilemap.GetCellCenterWorld(spawnPos);
+        spawnWorldPos.y = 0.5f;
+        HeadPrefab = Instantiate(headPrefab, spawnWorldPos, Quaternion.identity, transform);
+        for (int i = 0; i < snakeData.snakeLength; i++)
         {
-            BodyParts.Add(Instantiate(bodyPrefab, HeadPrefab.position - new Vector3(1, 0, 0) * (i+1), HeadPrefab.rotation));
+            BodyParts.Add(Instantiate(bodyPrefab, HeadPrefab.position - new Vector3(1, 0, 0) * (i + 1), HeadPrefab.rotation));
         }
-        TailPrefab = Instantiate(tailPrefab, BodyParts[BodyParts.Count - 1].position - new Vector3(1, 0, 0), HeadPrefab.rotation);
+        TailPrefab = Instantiate(tailPrefab, BodyParts[BodyParts.Count - 1].position - new Vector3(1, 0, 0), HeadPrefab.rotation, transform);
+        //BodyParts.Add(TailPrefab);
     }
 }

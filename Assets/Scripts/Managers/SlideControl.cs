@@ -8,6 +8,12 @@ public class SlideControl : MonoBehaviour
     private ISlidable _slidable;
     private Vector3 _lastWorldPosition;
 
+    private void Awake()
+    {
+        _playerInputController = FindAnyObjectByType<PlayerInput>();
+        _inputRaycastDetector = FindAnyObjectByType<RayCastDetector>();
+    }
+
     private void OnEnable()
     {
         _playerInputController.FingerTapEvent += OnFingerTap;
@@ -31,7 +37,7 @@ public class SlideControl : MonoBehaviour
             _slidable = slidable;
             targetCollider = _.collider;
             _lastWorldPosition = _inputRaycastDetector.GetWorldPositionOnInputPlane(screenPosition);
-            _slidable.OnSlideStart(targetCollider, _lastWorldPosition);
+            _slidable.OnSlideStart(_.collider,_lastWorldPosition);
         }
     }
     private void OnFingerMove(Vector2 screenPosition)

@@ -1,4 +1,7 @@
+using DG.Tweening;
+using Mono.Cecil;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SnakeControler : MonoBehaviour, ISlidable
@@ -7,149 +10,129 @@ public class SnakeControler : MonoBehaviour, ISlidable
     [SerializeField] private GridTiles gridTiles;
     [SerializeField] private Snake snake;
     [SerializeField] private float moveSpeed = 3f;
+    [SerializeField] private int spacing;
+
+    private Transform slideObject;
 
     private (Vector3, Vector3Int)? start;
     private (Vector3, Vector3Int)? target;
 
+    private List<Vector3> positionsHistory = new();
     private List<Vector3Int> currentPath = new();
     private int pathIndex = 0;
-    private int pathIndex2 = 0;
 
-    private bool isSlideOver = false;
-
-    private List<Vector3Int> positionHistory = new();
-
-    [SerializeField] private int spacing = 1;
-    private int maxHistory => (snake.BodyParts.Count + 1) * spacing;
-    private Transform slideObject;
 
     public void OnSlideStart(Collider targetCollider, Vector3 worldPosition)
     {
-        Debug.Log("Slide Start");
-        if (targetCollider.CompareTag("Head"))
+        slideObject = targetCollider.transform;
+
+        if (targetCollider.CompareTag("Tail"))
         {
-            Debug.Log("Head");
-            slideObject = snake.HeadPrefab;
-            snake.BodyParts.Add(snake.TailPrefab);
+            snake.BodyParts.Remove(snake.TailPrefab);
+            if (!snake.BodyParts.Contains(snake.HeadPrefab)) {
+            snake.BodyParts.Reverse();
+                snake.BodyParts.Add(snake.HeadPrefab);
+            }
         }
-        else if(targetCollider.CompareTag("Tail"))
+        else 
         {
-            Debug.Log("Tail");
-            slideObject = snake.TailPrefab;
-            snake.BodyParts.Add(snake.HeadPrefab);
+            snake.BodyParts.Remove(snake.HeadPrefab);
+            if (!snake.BodyParts.Contains(snake.TailPrefab)) {
+            snake.BodyParts.Reverse();
+                snake.BodyParts.Add(snake.TailPrefab);
+            }
+
         }
-        start = GetTargetTileAndPosition(worldPosition);
-        isSlideOver = false;
     }
 
     public void OnSlide(Vector3 worldPosition, Vector3 delta)
     {
-        var t = GetTargetTileAndPosition(worldPosition);
-        if (t != null) target = t;
-
-        if (!start.HasValue || !target.HasValue) return;
-
-        if (Vector3.Distance(slideObject.position, target.Value.Item1) < 0.01f)
-            return;
-
-        if (currentPath.Count == 0)
-        {
-            var path = gridTiles.GetPath(start.Value.Item2, target.Value.Item2); // GetPath
-            if (path != null && path.Count > 0)
-            {
-                currentPath = path;
-                pathIndex2 = 0;
-            }
-        }
+        GetPathToMove(worldPosition);
     }
 
     public void OnSlideEnd(Vector3 worldPosition)
     {
-        isSlideOver = true;
-
-        var t = GetTargetTileAndPosition(worldPosition);
-        if (t != null) target = t;
-        start = GetTargetTileAndPosition(slideObject.position);
-
-        if (!start.HasValue || !target.HasValue) return;
-
-        if (Vector3.Distance(slideObject.position, target.Value.Item1) < 0.01f)
-            return;
-
-
-        var path = gridTiles.GetPath(start.Value.Item2, target.Value.Item2); // GetPath
-        if (path != null && path.Count > 0)
-        {
-            currentPath.Clear();
-            currentPath.AddRange(path);
-            pathIndex = 0;
-        }
+        GetPathToMove(worldPosition, true);
     }
 
     private void Update()
     {
-        // ✅ Записываем позицию головы КАЖДЫЙ КАДР
-        if (positionHistory.Count > maxHistory)
-            positionHistory.RemoveAt(positionHistory.Count - 1);
+        if (slideObject == null)
+            return;
 
+        if (currentPath == null || currentPath.Count <= 0)
+            return;
 
-        if (currentPath.Count == 0 || !isSlideOver)
+        Vector3 targetPos =
+            gridTiles.tilemap.GetCellCenterWorld(currentPath[pathIndex]);
+
+        targetPos.y = slideObject.position.y;
+
+        var lastPos = slideObject.position;
+
+        slideObject.position = Vector3.MoveTowards(
+            slideObject.position,
+            targetPos,
+            moveSpeed * Time.deltaTime
+        );
+
+        if (Vector3.Distance(slideObject.position, targetPos) < 0.01f)
         {
-            // Движение во время слайда
-            if (pathIndex2 < currentPath.Count)
+            slideObject.position = targetPos;
+            positionsHistory.Insert(0, lastPos); // Add current position to history
+
+            for (var i = 0; i < snake.BodyParts.Count - 1; i++)
             {
-                Vector3 cellPos = gridTiles.tilemap.GetCellCenterWorld(currentPath[pathIndex2]);
-                cellPos.y = 0.5f;
-
-                slideObject.position = Vector3.MoveTowards(
-                    slideObject.position, cellPos, moveSpeed * Time.deltaTime);
-
-                if (Vector3.Distance(slideObject.position, cellPos) < 0.01f)
+                var bodyPart = snake.BodyParts[i];
+                positionsHistory.Insert(i + 1, bodyPart.position);
+                if (positionsHistory.Count > snake.BodyParts.Count)
                 {
-                    positionHistory.Insert(0, GetTargetTileAndPosition(slideObject.position).Value.Item2);
-
-                    slideObject.position = cellPos;
-                    start = (cellPos, currentPath[pathIndex2]);
-                    pathIndex2++;
-
-                    if (pathIndex2 >= currentPath.Count)
-                    {
-                        currentPath.Clear();
-                        pathIndex2 = 0;
-                    }
+                    positionsHistory.RemoveAt(positionsHistory.Count - 1);
                 }
-
             }
+            if (positionsHistory.Count > snake.BodyParts.Count)
+            {
+                positionsHistory.RemoveAt(positionsHistory.Count - 1);
+            }
+
+            pathIndex++;
+        }
+
+        if (pathIndex >= currentPath.Count)
+        {
+            currentPath.Clear();
+            pathIndex = 0;
+        }
+
+        if (currentPath.Count > 0 && positionsHistory.Count > 0)
+        {
+            Debug.Log($"Current path count: {currentPath.Count}, Positions history count: {positionsHistory.Count}");
+            MoveBodyParts();
         }
         else
         {
-            // Движение после отпускания пальца
-            Vector3 currentTarget = gridTiles.tilemap.GetCellCenterWorld(currentPath[pathIndex]);
-            currentTarget.y = 0.5f;
-
-            Transform head = slideObject;
-            head.position = Vector3.MoveTowards(head.position, currentTarget, moveSpeed * Time.deltaTime);
-
-            if (Vector3.Distance(head.position, currentTarget) < 0.01f)
-            {
-                spacing = 1;
-                positionHistory.Insert(0, GetTargetTileAndPosition(slideObject.position).Value.Item2);
-
-                head.position = currentTarget;
-                start = (currentTarget, currentPath[pathIndex]);
-                pathIndex++;
-
-                if (pathIndex >= currentPath.Count)
-                {
-                    currentPath.Clear();
-                }
-            }
+            Debug.Log("Current path count: 0");
         }
-        if (currentPath.Count > 0 && positionHistory.Count > 0)
+    }
+
+    public void GetPathToMove(Vector3 worldPosition, bool isSlideOver = false)
+    {
+        start = GetTargetTileAndPosition(slideObject.position);
+        target = GetTargetTileAndPosition(worldPosition);
+
+        if (!start.HasValue || !target.HasValue)
         {
-            MoveBodyParts();
+            //var lastValidTile = GetTargetTileAndPosition(slideObject.transform.position);
+            //slideObject.transform.DOMove(lastValidTile.HasValue ? lastValidTile.Value.Item1 : slideObject.position, 0.1f);
+            return;
         }
 
+        if (currentPath.Count != 0 && !isSlideOver) return;
+        currentPath = gridTiles.GetPath(
+            start.Value.Item2,
+            target.Value.Item2
+        );
+        pathIndex = 0;
     }
 
     public (Vector3, Vector3Int)? GetTargetTileAndPosition(Vector3 worldPosition)
@@ -159,22 +142,19 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     private void MoveBodyParts()
     {
-        /// MoveBodyParts теперь просто читает позиции из истории и двигает части тела к ним с помощью DOTween.
+        Debug.Log("Body Count: " + snake.BodyParts.Count);
         int index = 0;
         foreach (var bodyPart in snake.BodyParts)
         {
-            var targetPos = gridTiles.tilemap.GetCellCenterWorld(positionHistory[Mathf.Min(index * spacing, positionHistory.Count - 1)]);
-            // Implementation for moving body parts
-            targetPos.y = 0.5f; // фиксируем высоту
-            bodyPart.position = Vector3.MoveTowards(
-                bodyPart.position,
-                targetPos,
-                moveSpeed * Time.deltaTime);
-            if (Vector3.Distance(bodyPart.position, targetPos) < 0.01f)
-            {
-                bodyPart.position = targetPos;
-            }
+            Vector3 point = positionsHistory[Mathf.Min(index * spacing, positionsHistory.Count - 1)];
+            bodyPart.transform.position = point;
             index++;
         }
     }
 }
+
+
+
+
+
+

@@ -5186,7 +5186,8 @@ MonoBehaviour:
   gridTiles: {fileID: 121452648}
   snake: {fileID: 1809668524}
   moveSpeed: 10
-  spacing: 1
+  bodySpacing: 0.35
+  trailResolution: 0.05
 --- !u!1 &1832767876 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1142754804578105832, guid: aacd3ea6a073df845b530e55d9ad95fd, type: 3}
@@ -5422,7 +5423,8 @@ MonoBehaviour:
   gridTiles: {fileID: 121452648}
   snake: {fileID: 1987266957}
   moveSpeed: 10
-  spacing: 1
+  bodySpacing: 0.35
+  trailResolution: 0.05
 --- !u!114 &1987266957
 MonoBehaviour:
   m_ObjectHideFlags: 0

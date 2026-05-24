@@ -24,7 +24,6 @@ public class Snake : MonoBehaviour
 
     private void Awake()
     {
-        int lastIndex = int.MinValue;
         for (int i = 0; i < snakeData.rows; i++)
         {
             for (int j = 0; j < snakeData.columns; j++)

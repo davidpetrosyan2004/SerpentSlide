@@ -2126,6 +2126,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3644609708230690837, guid: aacd3ea6a073df845b530e55d9ad95fd, type: 3}
   m_PrefabInstance: {fileID: 1585329274}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &400178274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 400178278}
+  - component: {fileID: 400178277}
+  - component: {fileID: 400178276}
+  - component: {fileID: 400178275}
+  m_Layer: 0
+  m_Name: Snake (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &400178275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400178274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 654a90a24e1358a41bf6226d19b6d36b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnakeControler
+  gridTiles: {fileID: 121452648}
+  snake: {fileID: 400178276}
+  moveSpeed: 20
+  spacing: 1
+--- !u!114 &400178276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400178274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cde2c108558633243aab1d9b4e6b36ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Snake
+  bodyPrefab: {fileID: 844687420976035728, guid: f4401a5db98d82c49ae7e68f26248667, type: 3}
+  headPrefab: {fileID: 4657725220635885858, guid: 18038fb183b4c16429a308ebc667f15b, type: 3}
+  tailPrefab: {fileID: 8547837572589746971, guid: 97f4dd21cc8892a4092f60f9216d1a2d, type: 3}
+  gridTiles: {fileID: 121452648}
+  snakeData: {fileID: 11400000, guid: 0d621527653366849a38673243c34d33, type: 2}
+  spawnPos: {x: 0, y: 2, z: 0}
+  height: 10
+  width: 5
+--- !u!54 &400178277
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400178274}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!4 &400178278
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 400178274}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.5, y: 0.5, z: -1.233}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &405255398 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1142754804578105832, guid: aacd3ea6a073df845b530e55d9ad95fd, type: 3}
@@ -3431,13 +3528,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 890211382}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.6415029, y: -0.00082842604, z: -0.000621909, w: 0.76711994}
-  m_LocalPosition: {x: -0.6, y: 12.25, z: -4.75}
+  m_LocalRotation: {x: 0.6126145, y: -0.000804794, z: -0.0006522021, w: 0.79038125}
+  m_LocalPosition: {x: -0.5, y: 11.82, z: -5.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 79.807, y: -0.67, z: -0.653}
+  m_LocalEulerAnglesHint: {x: 75.557, y: -0.476, z: -0.463}
 --- !u!114 &890211386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8309,6 +8406,7 @@ SceneRoots:
   - {fileID: 885421333}
   - {fileID: 890211385}
   - {fileID: 1987266959}
+  - {fileID: 400178278}
   - {fileID: 121452647}
   - {fileID: 5709390460150977328}
   - {fileID: 182376027}

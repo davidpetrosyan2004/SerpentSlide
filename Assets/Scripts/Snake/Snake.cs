@@ -18,16 +18,29 @@ public class Snake : MonoBehaviour
     public Transform HeadPrefab { get; set; }
     public Transform TailPrefab { get; set; }
 
+    [SerializeField] private int height;
+    [SerializeField] private int width;
+
     private void Awake()
     {
-        var spawnWorldPos = gridTiles.tilemap.GetCellCenterWorld(spawnPos);
-        spawnWorldPos.y = 0.5f;
-        HeadPrefab = Instantiate(headPrefab, spawnWorldPos, Quaternion.identity, transform);
-        for (int i = 0; i < snakeData.snakeLength; i++)
+        for (int i = 0; i < snakeData.rows; i++)
         {
-            BodyParts.Add(Instantiate(bodyPrefab, HeadPrefab.position - new Vector3(1, 0, 0) * (i + 1), HeadPrefab.rotation));
+            for (int j = 0; j < snakeData.columns; j++)
+            {
+                if (snakeData.board[i].column[j].type == SnakeData.CellType.H)
+                {
+                    HeadPrefab = Instantiate(headPrefab, gridTiles.GetTileWorldPosition(new Vector3Int(i- width/2-1, 0, j- height/2-1)).Value.Item1, Quaternion.identity, transform);
+                }
+                else if (snakeData.board[i].column[j].type == SnakeData.CellType.B)
+                {
+                    BodyParts.Add(Instantiate(bodyPrefab, gridTiles.GetTileWorldPosition(new Vector3Int(i- width/2-1, 0, j- height/2-1)).Value.Item1, Quaternion.identity, transform));
+                }
+                else if (snakeData.board[i].column[j].type == SnakeData.CellType.T)
+                {
+                    TailPrefab = Instantiate(tailPrefab, gridTiles.GetTileWorldPosition(new Vector3Int(i - width / 2 - 1, 0, j - height / 2 - 1)).Value.Item1, Quaternion.identity, transform);
+                }
+            }
         }
-        TailPrefab = Instantiate(tailPrefab, BodyParts[BodyParts.Count - 1].position - new Vector3(1, 0, 0), HeadPrefab.rotation, transform);
         BodyParts.Add(TailPrefab);
     }
 }

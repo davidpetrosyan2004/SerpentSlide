@@ -96,7 +96,7 @@ public class AStarPathfinding
     {
         Node best = list[0];
         for (int i = 1; i < list.Count; i++)
-        {
+        { 
             if (list[i].fCost < best.fCost || (list[i].fCost == best.fCost && list[i].hCost < best.hCost))
                 best = list[i];
         }

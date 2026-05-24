@@ -20,24 +20,26 @@ public class SnakeControler : MonoBehaviour, ISlidable
     private List<Vector3> positionsHistory = new();
     private List<Vector3Int> currentPath = new();
     private int pathIndex = 0;
-
+    private bool isMoving = false;
 
     public void OnSlideStart(Collider targetCollider, Vector3 worldPosition)
     {
         slideObject = targetCollider.transform;
-
+        positionsHistory.Clear();
         if (targetCollider.CompareTag("Tail"))
         {
             snake.BodyParts.Remove(snake.TailPrefab);
-            if (!snake.BodyParts.Contains(snake.HeadPrefab)) {
-            snake.BodyParts.Reverse();
+            if (!snake.BodyParts.Contains(snake.HeadPrefab))
+            {
+                snake.BodyParts.Reverse();
                 snake.BodyParts.Add(snake.HeadPrefab);
             }
         }
-        else 
+        else
         {
             snake.BodyParts.Remove(snake.HeadPrefab);
-            if (!snake.BodyParts.Contains(snake.TailPrefab)) {
+            if (!snake.BodyParts.Contains(snake.TailPrefab))
+            {
                 snake.BodyParts.Reverse();
                 snake.BodyParts.Add(snake.TailPrefab);
             }
@@ -47,12 +49,43 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     public void OnSlide(Vector3 worldPosition, Vector3 delta)
     {
-        GetPathToMove(worldPosition);
+
+        start = GetTargetTileAndPosition(slideObject.position);
+        target = GetTargetTileAndPosition(worldPosition);
+
+        if (!start.HasValue || !target.HasValue) return;
+
+        if (start.Value.Item2 == target.Value.Item2) return;
+
+        if (currentPath.Count == 0)
+        {
+            var path = gridTiles.GetPath(
+            start.Value.Item2,
+            target.Value.Item2);
+            if (path != null)
+                currentPath = path;
+
+            pathIndex = 0;
+        }
     }
 
     public void OnSlideEnd(Vector3 worldPosition)
     {
-        GetPathToMove(worldPosition, true);
+        start = GetTargetTileAndPosition(slideObject.position);
+        target = GetTargetTileAndPosition(worldPosition);
+
+        if (!start.HasValue || !target.HasValue) return;
+
+        if (!isMoving)
+        {
+            var path = gridTiles.GetPath(
+            start.Value.Item2,
+            target.Value.Item2);
+            if (path != null)
+                currentPath = path;
+
+            pathIndex = 0;
+        }
     }
 
     private void Update()
@@ -75,9 +108,11 @@ public class SnakeControler : MonoBehaviour, ISlidable
             targetPos,
             moveSpeed * Time.deltaTime
         );
-
+        isMoving = true;
         if (Vector3.Distance(slideObject.position, targetPos) < 0.01f)
         {
+            gridTiles.SetWalkablesOnBoard();
+
             slideObject.position = targetPos;
             positionsHistory.Insert(0, lastPos); // Add current position to history
 
@@ -94,7 +129,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
             {
                 positionsHistory.RemoveAt(positionsHistory.Count - 1);
             }
-
+            isMoving = false;
             pathIndex++;
         }
 
@@ -106,33 +141,13 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
         if (currentPath.Count > 0 && positionsHistory.Count > 0)
         {
-            Debug.Log($"Current path count: {currentPath.Count}, Positions history count: {positionsHistory.Count}");
+            //Debug.Log($"Current path count: {currentPath.Count}, Positions history count: {positionsHistory.Count}");
             MoveBodyParts();
         }
         else
         {
-            Debug.Log("Current path count: 0");
+            //Debug.Log("Current path count: 0");
         }
-    }
-
-    public void GetPathToMove(Vector3 worldPosition, bool isSlideOver = false)
-    {
-        start = GetTargetTileAndPosition(slideObject.position);
-        target = GetTargetTileAndPosition(worldPosition);
-
-        if (!start.HasValue || !target.HasValue)
-        {
-            //var lastValidTile = GetTargetTileAndPosition(slideObject.transform.position);
-            //slideObject.transform.DOMove(lastValidTile.HasValue ? lastValidTile.Value.Item1 : slideObject.position, 0.1f);
-            return;
-        }
-
-        if (currentPath.Count != 0 && !isSlideOver) return;
-        currentPath = gridTiles.GetPath(
-            start.Value.Item2,
-            target.Value.Item2
-        );
-        pathIndex = 0;
     }
 
     public (Vector3, Vector3Int)? GetTargetTileAndPosition(Vector3 worldPosition)
@@ -142,19 +157,17 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     private void MoveBodyParts()
     {
-        Debug.Log("Body Count: " + snake.BodyParts.Count);
+        //Debug.Log("Body Count: " + snake.BodyParts.Count);
         int index = 0;
         foreach (var bodyPart in snake.BodyParts)
         {
             Vector3 point = positionsHistory[Mathf.Min(index * spacing, positionsHistory.Count - 1)];
-            bodyPart.transform.position = point;
+            bodyPart.transform.position= Vector3.MoveTowards(bodyPart.transform.position, point, moveSpeed * Time.deltaTime);
+            if (Vector3.Distance(bodyPart.transform.position, point) < 0.01f)
+            {
+                bodyPart.transform.position = point;
+            }
             index++;
         }
     }
 }
-
-
-
-
-
-

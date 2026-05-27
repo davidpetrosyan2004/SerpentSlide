@@ -1,103 +1,3 @@
-//using UnityEditor;
-//using UnityEngine;
-
-//[CustomEditor(typeof(SnakeData))]
-//[CanEditMultipleObjects]
-//public class SnakeDataDrawer : Editor
-//{
-//    private SnakeData Data => (SnakeData)target;
-//    public override void OnInspectorGUI()
-//    {
-//        serializedObject.Update();
-
-//        EditorGUI.BeginChangeCheck();
-
-//        DrawSizeFields();
-//        EditorGUILayout.Space();
-
-//        DrawButtons();
-//        EditorGUILayout.Space();
-
-//        if (IsBoardValid())
-//        {
-//            DrawBoard();
-//        }
-
-//        if (EditorGUI.EndChangeCheck())
-//        {
-//            EditorUtility.SetDirty(Data);
-//        }
-
-//        serializedObject.ApplyModifiedProperties();
-//    }
-
-//    private void DrawSizeFields()
-//    {
-//        SerializedProperty columnsProp = serializedObject.FindProperty("columns");
-//        SerializedProperty rowsProp = serializedObject.FindProperty("rows");
-//        SerializedProperty lengthProp = serializedObject.FindProperty("length");
-//        SerializedProperty spawnPosProp = serializedObject.FindProperty("spawnPos");
-
-//        EditorGUILayout.PropertyField(columnsProp);
-//        EditorGUILayout.PropertyField(rowsProp);
-//        EditorGUILayout.PropertyField(lengthProp);
-//        EditorGUILayout.PropertyField(spawnPosProp);
-
-//        if (serializedObject.hasModifiedProperties)
-//        {
-//            serializedObject.ApplyModifiedProperties();
-
-//            Undo.RecordObject(Data, "Resize Grid");
-//            Data.CreateNewBoard();
-//            EditorUtility.SetDirty(Data);
-//        }
-//    }
-
-//    private void DrawButtons()
-//    {
-//        if (GUILayout.Button("Clear Board"))
-//        {
-//            Data.Clear();
-//        }
-//    }
-
-//    private bool IsBoardValid()
-//    {
-//        return Data.board != null &&
-//               Data.board.Length == Data.rows &&
-//               Data.columns > 0 &&
-//               Data.rows > 0;
-//    }
-
-//    private void DrawBoard()
-//    {
-//        float size = 25f;
-
-//        for (int row = 0; row < Data.rows; row++)
-//        {
-//            EditorGUILayout.BeginHorizontal();
-
-//            for (int col = 0; col < Data.columns; col++)
-//            {
-//                bool cell = Data.board[row].column[col];
-
-//                Color oldColor = GUI.backgroundColor;
-
-//                GUI.backgroundColor = cell ? Color.white : Color.gray;
-
-//                if (GUILayout.Button("", GUILayout.Width(size), GUILayout.Height(size)))
-//                {
-//                    Data.board[row].column[col] = !Data.board[row].column[col];
-//                }
-
-//                GUI.backgroundColor = oldColor;
-//            }
-
-//            EditorGUILayout.EndHorizontal();
-//        }
-//    }
-//}
-
 using UnityEditor;
 using UnityEngine;
 
@@ -106,8 +6,11 @@ using UnityEngine;
 public class SnakeDataDrawer : Editor
 {
     private SnakeData Data => (SnakeData)target;
+
     private SnakeData.CellType selectedType;
+    private SnakeData.ColorType selectedColor;
     private int selectedIndexBody;
+
     public override void OnInspectorGUI()
     {
         serializedObject.Update();
@@ -154,8 +57,14 @@ public class SnakeDataDrawer : Editor
             "BodyPart",
             selectedType
         );
+
+        selectedColor = (SnakeData.ColorType)EditorGUILayout.EnumPopup(
+            "HeadColor",
+            selectedColor
+        );
+
         selectedIndexBody = EditorGUILayout.IntPopup(
-            "BodyPart",
+            "BodyIndex",
             selectedIndexBody,
             new string[] { "0", "1", "2", "3", "4", "5", "6" },
             new int[] { 0, 1, 2, 3, 4, 5, 6 }
@@ -191,12 +100,17 @@ public class SnakeDataDrawer : Editor
                 var cell = Data.board[row].column[col];
 
                 Color old = GUI.color;
-                GUI.color = GetColor(cell.type);
+                GUI.color = GetColor(cell.color);
 
                 if (GUILayout.Button("", GUILayout.Width(size), GUILayout.Height(size)))
                 {
-                    Data.board[row].column[col].type = selectedType;
-                    Data.board[row].column[col].indexBody = selectedIndexBody;
+                    Undo.RecordObject(Data, "Paint Cell");
+
+                    cell.type = selectedType;
+                    cell.indexBody = selectedIndexBody;
+                    cell.color = selectedColor;
+
+                    EditorUtility.SetDirty(Data);
                 }
 
                 GUI.color = old;
@@ -216,14 +130,16 @@ public class SnakeDataDrawer : Editor
         }
     }
 
-    private Color GetColor(SnakeData.CellType type)
+    private Color GetColor(SnakeData.ColorType type)
     {
         switch (type)
         {
-            case SnakeData.CellType.E: return Color.gray;
-            case SnakeData.CellType.H: return Color.red;
-            case SnakeData.CellType.B: return Color.white;
-            case SnakeData.CellType.T: return Color.pink;
+            case SnakeData.ColorType.None: return Color.gray;
+            case SnakeData.ColorType.Red: return Color.red;
+            case SnakeData.ColorType.Blue: return Color.blue;
+            case SnakeData.ColorType.Green: return Color.green;
+            case SnakeData.ColorType.Yellow: return Color.yellow;
+            case SnakeData.ColorType.Orange: return Color.Lerp(Color.red, Color.yellow, 0.5f);
             default: return Color.gray;
         }
     }

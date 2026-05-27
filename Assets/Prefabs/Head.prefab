@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1840250498402146390}
   - component: {fileID: 4415494847164466514}
   - component: {fileID: 432789895619920099}
+  - component: {fileID: -5793882825838132434}
   - component: {fileID: -2128657324334952131}
   m_Layer: 3
   m_Name: Head
@@ -109,7 +110,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
@@ -128,6 +129,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SlideControl
   _playerInputController: {fileID: 0}
   _inputRaycastDetector: {fileID: 0}
+--- !u!114 &-5793882825838132434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6172320794707220585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86a35f8b6fd5764a975c5062d77247b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnakePart
 --- !u!54 &-2128657324334952131
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1,14 +1,11 @@
-using DG.Tweening;
-using Mono.Cecil;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SnakeControler : MonoBehaviour, ISlidable
 {
     [Header("References")]
     [SerializeField] private GridTiles gridTiles;
-    [SerializeField] private Snake snake;
+    [SerializeField] public Snake snake;
     [SerializeField] private float moveSpeed = 3f;
     [SerializeField] private int spacing;
 
@@ -20,14 +17,35 @@ public class SnakeControler : MonoBehaviour, ISlidable
     private List<Vector3> positionsHistory = new();
     private List<Vector3Int> currentPath = new();
     private int pathIndex = 0;
+
+    private bool isReached = false;
     private bool isMoving = false;
+    public bool isDiving { get; set; }
+
+    public Vector3[] DivePositions { get; set; }
+    public Gate gate { get; set; }
+    private int diveIndex;
+    public bool isLinked = false;
 
     public void OnSlideStart(Collider targetCollider, Vector3 worldPosition)
     {
+        if (isDiving) return;
+        if (!isLinked)
+            gridTiles.Tag = targetCollider.GetComponent<SnakePart>().color;
+        Debug.Log(gridTiles.Tag);
+        gridTiles.SetWalkablesOnBoard();
+
         slideObject = targetCollider.transform;
         positionsHistory.Clear();
         if (targetCollider.CompareTag("Tail"))
         {
+            if (snake.linkedSnake != null)
+            {
+                Debug.Log("Notifying linked snake about tail slide start");
+                snake.linkedSnake.GetComponent<SnakeControler>().OnSlideStart(snake.linkedSnake.GetComponent<Snake>().TailPrefab.GetComponent<Collider>(), worldPosition);
+            }
+
+            snake.GetComponent<Snake>().isReversed = true;
             snake.BodyParts.Remove(snake.TailPrefab);
             if (!snake.BodyParts.Contains(snake.HeadPrefab))
             {
@@ -37,6 +55,11 @@ public class SnakeControler : MonoBehaviour, ISlidable
         }
         else
         {
+            if (snake.linkedSnake != null)
+            {
+                snake.linkedSnake.GetComponent<SnakeControler>().OnSlideStart(snake.linkedSnake.GetComponent<Snake>().HeadPrefab.GetComponent<Collider>(), worldPosition);
+            }
+            snake.GetComponent<Snake>().isReversed = false;
             snake.BodyParts.Remove(snake.HeadPrefab);
             if (!snake.BodyParts.Contains(snake.TailPrefab))
             {
@@ -49,7 +72,13 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     public void OnSlide(Vector3 worldPosition, Vector3 delta)
     {
-
+        if (slideObject == null)
+            return;
+        if (snake.linkedSnake != null)
+        {
+            snake.linkedSnake.GetComponent<SnakeControler>().OnSlide(worldPosition, delta);
+        }
+        
         start = GetTargetTileAndPosition(slideObject.position);
         target = GetTargetTileAndPosition(worldPosition);
 
@@ -71,6 +100,14 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     public void OnSlideEnd(Vector3 worldPosition)
     {
+        if (slideObject == null)
+            return;
+
+        if (snake.linkedSnake != null)
+        {
+            snake.linkedSnake.GetComponent<SnakeControler>().OnSlideEnd(worldPosition);
+        }
+
         start = GetTargetTileAndPosition(slideObject.position);
         target = GetTargetTileAndPosition(worldPosition);
 
@@ -90,6 +127,45 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     private void Update()
     {
+        if (isDiving)
+        {
+            
+            if (diveIndex >= DivePositions.Length)
+            {
+                isDiving = false;
+                GameManager.Instance.RemoveGateCount();
+                Destroy(gate.gameObject);
+                Destroy(gameObject);
+                return;
+            }
+
+            Vector3 target = DivePositions[diveIndex];
+
+            Vector3 prevPos = slideObject.position;
+
+            slideObject.position = Vector3.MoveTowards(
+                slideObject.position,
+                target,
+                moveSpeed * Time.deltaTime
+            );
+
+            if (Vector3.Distance(slideObject.position, target) < 0.01f)
+            {
+                slideObject.position = target;
+
+                AudioManager.Instance.PlaySound("Dive");
+                gate.OnBodyPartDiveEffect();
+                AudioManager.Instance.Vibrate();
+
+                UpdatePositionsHistory(prevPos);
+
+                diveIndex++;
+            }
+
+            MoveBodyParts();
+            return;
+        }
+
         if (slideObject == null)
             return;
 
@@ -111,26 +187,22 @@ public class SnakeControler : MonoBehaviour, ISlidable
         isMoving = true;
         if (Vector3.Distance(slideObject.position, targetPos) < 0.01f)
         {
-            gridTiles.SetWalkablesOnBoard();
+            if (!isReached)
+            {
+                isReached = true;
+                OnReachedTarget();
+            }
 
             slideObject.position = targetPos;
-            positionsHistory.Insert(0, lastPos); // Add current position to history
 
-            for (var i = 0; i < snake.BodyParts.Count - 1; i++)
-            {
-                var bodyPart = snake.BodyParts[i];
-                positionsHistory.Insert(i + 1, bodyPart.position);
-                if (positionsHistory.Count > snake.BodyParts.Count)
-                {
-                    positionsHistory.RemoveAt(positionsHistory.Count - 1);
-                }
-            }
-            if (positionsHistory.Count > snake.BodyParts.Count)
-            {
-                positionsHistory.RemoveAt(positionsHistory.Count - 1);
-            }
+            UpdatePositionsHistory(lastPos);
+
             isMoving = false;
             pathIndex++;
+        }
+        else
+        {
+            isReached = false;
         }
 
         if (pathIndex >= currentPath.Count)
@@ -165,5 +237,37 @@ public class SnakeControler : MonoBehaviour, ISlidable
             }
             index++;
         }
+    }
+
+    public void OnReachedTarget()
+    {
+        if (slideObject == null) return;
+        gridTiles.SetWalkablesOnBoard();
+        AudioManager.Instance.PlaySound("Move");
+        AudioManager.Instance.Vibrate();
+    }
+
+    public void UpdatePositionsHistory(Vector3 lastPos)
+    {
+        positionsHistory.Insert(0, lastPos); // Add current position to history
+
+        for (var i = 0; i < snake.BodyParts.Count - 1; i++)
+        {
+            var bodyPart = snake.BodyParts[i];
+            positionsHistory.Insert(i + 1, bodyPart.position);
+            if (positionsHistory.Count > snake.BodyParts.Count)
+            {
+                positionsHistory.RemoveAt(positionsHistory.Count - 1);
+            }
+        }
+        if (positionsHistory.Count > snake.BodyParts.Count)
+        {
+            positionsHistory.RemoveAt(positionsHistory.Count - 1);
+        }
+    }
+
+    public bool IsSnakeFilled()
+    {
+        return snake.coloredBodyPartsCount == 0;
     }
 }

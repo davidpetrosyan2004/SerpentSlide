@@ -11,7 +11,10 @@ GameObject:
   - component: {fileID: 8547837572589746971}
   - component: {fileID: 2516080094304084819}
   - component: {fileID: 2385890313638932354}
+  - component: {fileID: 1080043159085018677}
+  - component: {fileID: 924808851997899438}
   - component: {fileID: 2030338239493368498}
+  - component: {fileID: 5976303646560880628}
   m_Layer: 3
   m_Name: Tail
   m_TagString: Tail
@@ -91,6 +94,32 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1080043159085018677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090340088172455073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86a35f8b6fd5764a975c5062d77247b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SnakePart
+--- !u!114 &924808851997899438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090340088172455073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0e3463ed611d314cbac64ace835657d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BodyPart
+  colorChangeEffect: {fileID: 4659157641869258415, guid: d7ddd97bb99e21244ab6e251537cf253, type: 3}
+  meshRenderer: {fileID: 2385890313638932354}
 --- !u!65 &2030338239493368498
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -107,8 +136,35 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.3162761, y: 1, z: 1.8604568}
+  m_Size: {x: 1.3162761, y: 1, z: 2.6763818}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &5976303646560880628
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6090340088172455073}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

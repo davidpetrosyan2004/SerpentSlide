@@ -108,7 +108,7 @@ BoxCollider:
     m_Bits: 0
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
-  m_ProvidesContacts: 1
+  m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1.8905529, y: 1, z: 1.5301846}
@@ -125,4 +125,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0e3463ed611d314cbac64ace835657d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BodyPart
-  index: 0
+  colorChangeEffect: {fileID: 4659157641869258415, guid: d7ddd97bb99e21244ab6e251537cf253, type: 3}
+  meshRenderer: {fileID: 7965435782153911058}

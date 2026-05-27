@@ -1,0 +1,5 @@
+C:/Users/davit/Documents/UnityProjects/SerpentSlide/.utmp/RelWithDebInfo/2o6c2b1r/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/davit/Documents/UnityProjects/SerpentSlide/.utmp/RelWithDebInfo/2o6c2b1r/arm64-v8a/CMakeFiles/rebuild_cache.dir
+C:/Users/davit/Documents/UnityProjects/SerpentSlide/.utmp/RelWithDebInfo/2o6c2b1r/arm64-v8a/GameActivity/CMakeFiles/game.dir
+C:/Users/davit/Documents/UnityProjects/SerpentSlide/.utmp/RelWithDebInfo/2o6c2b1r/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+C:/Users/davit/Documents/UnityProjects/SerpentSlide/.utmp/RelWithDebInfo/2o6c2b1r/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir

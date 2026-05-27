@@ -10,11 +10,22 @@ public class SnakeData : ScriptableObject
         B,
         T
     }
+
+    public enum ColorType
+    {
+        None,
+        Red,
+        Blue,
+        Green,
+        Yellow,
+        Orange,
+    }
     [System.Serializable]
     public class Cell
     {
         public CellType type;
         public int indexBody;
+        public ColorType color;
     }
 
     [System.Serializable]
@@ -31,6 +42,8 @@ public class SnakeData : ScriptableObject
                 column[i] = new Cell
                 {
                     type = CellType.E,
+                    indexBody = -1,
+                    color = ColorType.None,
                 };
             }
         }
@@ -40,7 +53,8 @@ public class SnakeData : ScriptableObject
             for (int i = 0; i < column.Length; i++)
             {
                 column[i].type = CellType.E;
-                column[i].indexBody = -1; 
+                column[i].indexBody = -1;
+                column[i].color = ColorType.None;
             }
         }
     }

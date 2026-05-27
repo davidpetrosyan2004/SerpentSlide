@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.WSA;
 
 public class GridTiles : MonoBehaviour
 {
@@ -9,9 +8,13 @@ public class GridTiles : MonoBehaviour
     [SerializeField] private Transform enviroment;
     private Dictionary<Vector3Int, AStarPathfinding.Node> gridMap = new();
 
+    public Color Tag { get; set; }
+
+
     private void Start()
     {
-        UnityEngine.Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;
+
         InitBoardTilesNodes();
         SetWalkablesOnBoard();
     }
@@ -46,24 +49,28 @@ public class GridTiles : MonoBehaviour
                 TileBase tile = tilemap.GetTile(pos);
 
                 Vector3 worldPos = tilemap.GetCellCenterWorld(pos);
+                RaycastHit hit;
+                bool isBlocked = false;
 
-                bool isBlocked = Physics.Raycast(
+                if (Physics.Raycast(
                     worldPos,
                     Vector3.up,
+                    out hit,
                     20f
-                );
+                ))
+                {
+                    isBlocked = true;
+                    if (hit.collider.TryGetComponent<CellObject>(out var cellObject))
+                    {
+                        if (cellObject.color == Tag)
+                        {
+                            isBlocked = false;
+                        }
+                    }
+                }
                 bool walkable = !isBlocked && tile != null;
                 Debug.DrawRay(worldPos, Vector3.up * 20f, walkable ? Color.green : Color.red,2f);
-                Color c = tilemap.GetColor(pos);
-                if (walkable)
-                {
-                    c.a = 0;
-                }
-                else
-                {
-                    c.a = 1f;
-                }
-                tilemap.SetColor(pos, c);
+
                 gridMap[pos].walkable = walkable;
             }
         }

@@ -149,6 +149,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8034984220251739192, guid: b8d44315de767c048809abaa9747e010, type: 3}
   m_PrefabInstance: {fileID: 7895787328407915462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &167774022 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6595575927016397174, guid: b8d44315de767c048809abaa9747e010, type: 3}
+  m_PrefabInstance: {fileID: 7895787328407915462}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &182376025
 GameObject:
   m_ObjectHideFlags: 11
@@ -1455,6 +1460,10 @@ PrefabInstance:
       propertyPath: headPrefab
       value: 
       objectReference: {fileID: 3343933012676548992, guid: af9a68eac29039a428a1f43e9fa39fc8, type: 3}
+    - target: {fileID: 365177347437027914, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: linkedSnake
+      value: 
+      objectReference: {fileID: 167774022}
     - target: {fileID: 1950293415329190222, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.99
@@ -1479,6 +1488,10 @@ PrefabInstance:
       propertyPath: headPrefab
       value: 
       objectReference: {fileID: 3343933012676548992, guid: af9a68eac29039a428a1f43e9fa39fc8, type: 3}
+    - target: {fileID: 5962085630940939202, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: linkedSnake
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6226937090686709205, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_TileAssetArray.Array.data[1].m_Data
       value: 

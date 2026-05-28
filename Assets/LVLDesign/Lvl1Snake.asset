@@ -28,9 +28,9 @@ MonoBehaviour:
     - type: 0
       indexBody: -1
       color: 0
-    - type: 0
-      indexBody: -1
-      color: 0
+    - type: 1
+      indexBody: 0
+      color: 3
   - column:
     - type: 0
       indexBody: -1
@@ -44,9 +44,9 @@ MonoBehaviour:
     - type: 0
       indexBody: -1
       color: 0
-    - type: 0
-      indexBody: -1
-      color: 0
+    - type: 2
+      indexBody: 0
+      color: 3
   - column:
     - type: 0
       indexBody: -1
@@ -60,9 +60,9 @@ MonoBehaviour:
     - type: 0
       indexBody: -1
       color: 0
-    - type: 0
-      indexBody: -1
-      color: 0
+    - type: 2
+      indexBody: 1
+      color: 3
   - column:
     - type: 0
       indexBody: -1
@@ -76,6 +76,6 @@ MonoBehaviour:
     - type: 0
       indexBody: -1
       color: 0
-    - type: 0
-      indexBody: -1
-      color: 0
+    - type: 3
+      indexBody: 1
+      color: 3

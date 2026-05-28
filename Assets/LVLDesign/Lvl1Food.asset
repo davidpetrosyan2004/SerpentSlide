@@ -16,66 +16,66 @@ MonoBehaviour:
   rows: 4
   board:
   - column:
-    - type: 2
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
+      colorType: 0
   - column:
-    - type: 2
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
+      colorType: 0
   - column:
-    - type: 2
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
+      colorType: 0
   - column:
-    - type: 2
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-    - type: 2
+      colorType: 0
+    - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
+      colorType: 0

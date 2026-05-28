@@ -10,6 +10,7 @@ public class SnakeDataDrawer : Editor
     private SnakeData.CellType selectedType;
     private SnakeData.ColorType selectedColor;
     private int selectedIndexBody;
+    private int selectedRotation;
 
     public override void OnInspectorGUI()
     {
@@ -69,6 +70,13 @@ public class SnakeDataDrawer : Editor
             new string[] { "0", "1", "2", "3", "4", "5", "6" },
             new int[] { 0, 1, 2, 3, 4, 5, 6 }
         );
+
+        selectedRotation = EditorGUILayout.IntPopup(
+            "Rotation",
+            selectedRotation,
+            new[] { "0", "60", "-60", "-120", "120", "180" },
+            new[] { 0, 60, -60, -120, 120, 180 }
+        );
     }
 
     private void DrawButtons()
@@ -109,6 +117,7 @@ public class SnakeDataDrawer : Editor
                     cell.type = selectedType;
                     cell.indexBody = selectedIndexBody;
                     cell.color = selectedColor;
+                    cell.rotation = selectedRotation;
 
                     EditorUtility.SetDirty(Data);
                 }

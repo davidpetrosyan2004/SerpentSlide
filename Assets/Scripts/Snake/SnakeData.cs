@@ -26,6 +26,7 @@ public class SnakeData : ScriptableObject
         public CellType type;
         public int indexBody;
         public ColorType color;
+        public int rotation;
     }
 
     [System.Serializable]

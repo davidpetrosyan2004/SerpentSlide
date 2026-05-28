@@ -61,22 +61,23 @@ public class Snake : MonoBehaviour
             for (int j = 0; j < snakeData.columns; j++)
             {
                 var spawnPos = gridTiles.GetTileWorldPosition(new Vector3Int(i, 0, j) + offset).Value.Item1;
+                var cell = snakeData.board[i].column[j];
                 if (snakeData.board[i].column[j].type == SnakeData.CellType.H)
                 {
-                    HeadPrefab = Instantiate(headPrefab, spawnPos, Quaternion.identity, transform);
-                    color = GetColor(snakeData.board[i].column[j].color);
+                    HeadPrefab = Instantiate(headPrefab, spawnPos, Quaternion.Euler(0, cell.rotation, 0), transform);
+                    color = GetColor(cell.color);
                     var HeadScript = HeadPrefab.GetChild(0).GetComponent<SnakePart>();
                     HeadScript.color = color;
                     HeadScript.partMesh.material.color = color;
                 }
-                else if (snakeData.board[i].column[j].type == SnakeData.CellType.B)
+                else if (cell.type == SnakeData.CellType.B)
                 { 
                     var bodyPart = Instantiate(bodyPrefab, spawnPos, Quaternion.identity, transform);
                     bodyPart.GetComponent<BodyPart>().index = snakeData.board[i].column[j].indexBody;
                     BodyParts.Add(bodyPart);
                     coloredBodyPartsCount++;
                 }
-                else if (snakeData.board[i].column[j].type == SnakeData.CellType.T)
+                else if (cell.type == SnakeData.CellType.T)
                 {
                     TailPrefab = Instantiate(tailPrefab, spawnPos, Quaternion.identity, transform);
                     TailPrefab.GetComponent<SnakePart>().color = color;

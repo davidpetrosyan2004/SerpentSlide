@@ -15,20 +15,12 @@ public class GameWinLose : MonoBehaviour
         disableGamePanel.SetActive(false);
         GameManager.Instance.OnGameCondition += PanelPopUp;
     }
-
-    private void OnEnable()
-    {
-    }
-
+    
     private void OnDestroy()
     {
         GameManager.Instance.OnGameCondition -= PanelPopUp;
         
     }
-    private void OnDisable()
-    {
-    }
-
     public void PanelPopUp(bool gameCondition)
     {
         Debug.Log("Game Condition: " + gameCondition);

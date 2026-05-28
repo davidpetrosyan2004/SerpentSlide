@@ -65,8 +65,9 @@ public class Snake : MonoBehaviour
                 {
                     HeadPrefab = Instantiate(headPrefab, spawnPos, Quaternion.identity, transform);
                     color = GetColor(snakeData.board[i].column[j].color);
-                    HeadPrefab.GetComponent<SnakePart>().color = color;
-                    HeadPrefab.GetComponent<MeshRenderer>().material.color = color;
+                    var HeadScript = HeadPrefab.GetChild(0).GetComponent<SnakePart>();
+                    HeadScript.color = color;
+                    HeadScript.partMesh.material.color = color;
                 }
                 else if (snakeData.board[i].column[j].type == SnakeData.CellType.B)
                 { 
@@ -164,9 +165,9 @@ public class Snake : MonoBehaviour
         sprite.transform.rotation = Quaternion.Euler(90, 0, 0);
         sprite.transform.position = HeadPrefab.position + new Vector3(0, 0.4f, 0);
         sprite.transform.SetParent(HeadPrefab.transform);
-        sprite.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        sprite.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
         sprite.transform.DOPunchScale(
-            new Vector3(0.2f, 0.2f, 0.2f),
+            new Vector3(0.1f, 0.1f, 0.1f),
             0.3f,
             8,
             0.8f

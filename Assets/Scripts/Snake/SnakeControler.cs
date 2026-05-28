@@ -42,10 +42,10 @@ public class SnakeControler : MonoBehaviour, ISlidable
         Debug.Log(gridTiles.Tag);
         gridTiles.SetWalkablesOnBoard();
 
-        slideObject = targetCollider.transform;
         positionsHistory.Clear();
         if (targetCollider.CompareTag("Tail"))
         {
+            slideObject = targetCollider.transform;
             if (snake.linkedSnake != null)
             {
                 Debug.Log("Notifying linked snake about tail slide start");
@@ -62,6 +62,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
         }
         else
         {
+            slideObject = targetCollider.transform.parent;
             if (snake.linkedSnake != null)
             {
                 snake.linkedSnake.GetComponent<SnakeControler>().OnSlideStart(snake.linkedSnake.GetComponent<Snake>().HeadPrefab.GetComponent<Collider>(), worldPosition);
@@ -170,6 +171,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
                 moveSpeed * Time.deltaTime
             );
 
+
             if (Vector3.Distance(slideObject.position, target) < 0.01f)
             {
                 slideObject.position = target;
@@ -205,7 +207,20 @@ public class SnakeControler : MonoBehaviour, ISlidable
             targetPos,
             moveSpeed * Time.deltaTime
         );
+
+        Vector3 direction = targetPos - slideObject.position;
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion targetRotation =
+    Quaternion.LookRotation(direction) *
+    Quaternion.Euler(0, 90, 0);
+
+            slideObject.rotation = targetRotation;
+        }
+
         isMoving = true;
+
         if (Vector3.Distance(slideObject.position, targetPos) < 0.01f)
         {
             if (!isReached)
@@ -215,7 +230,6 @@ public class SnakeControler : MonoBehaviour, ISlidable
             }
 
             slideObject.position = targetPos;
-
             UpdatePositionsHistory(lastPos);
 
             isMoving = false;
@@ -252,6 +266,16 @@ public class SnakeControler : MonoBehaviour, ISlidable
         {
             Vector3 point = positionsHistory[Mathf.Min(index * spacing, positionsHistory.Count - 1)];
             bodyPart.transform.position= Vector3.MoveTowards(bodyPart.transform.position, point, moveSpeed * Time.deltaTime);
+            Vector3 direction = point - slideObject.position;
+
+            if (direction != Vector3.zero)
+            {
+                Quaternion targetRotation =
+        Quaternion.LookRotation(direction) *
+        Quaternion.Euler(0, 90, 0);
+
+                bodyPart.rotation = targetRotation;
+            }
             if (Vector3.Distance(bodyPart.transform.position, point) < 0.01f)
             {
                 bodyPart.transform.position = point;

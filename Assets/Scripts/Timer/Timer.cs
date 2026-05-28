@@ -22,6 +22,7 @@ public class Timer : MonoBehaviour
     private void OnEnable()
     {
         GameManager.Instance.TimerStart += StartTimer;
+        GameManager.Instance.OnGameCondition += StopTimer;
     }
 
     private void OnDisable()
@@ -109,5 +110,10 @@ public class Timer : MonoBehaviour
     public void StartTimer()
     {
         running = true;
+    }
+
+    public void StopTimer(bool isGame)
+    {
+        isEnded = true;
     }
 }

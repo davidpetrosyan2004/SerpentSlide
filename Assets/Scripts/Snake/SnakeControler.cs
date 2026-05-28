@@ -31,6 +31,11 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     public void OnSlideStart(Collider targetCollider, Vector3 worldPosition)
     {
+        if (GameManager.Instance.isTutorial)
+        {
+            GameManager.Instance.isTutorial = false;
+            GameManager.Instance.OnFingerTap?.Invoke();
+        }
         if (!GameManager.Instance.isTimerStarted)
         {
             GameManager.Instance.isTimerStarted = true;

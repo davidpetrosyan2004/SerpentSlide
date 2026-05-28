@@ -80,7 +80,7 @@ public class Snake : MonoBehaviour
                 else if (cell.type == SnakeData.CellType.T)
                 {
                     TailPrefab = Instantiate(tailPrefab, spawnPos, Quaternion.identity, transform);
-                    TailPrefab.GetComponent<SnakePart>().color = color;
+                    TailPrefab.GetComponent<SnakePart>().color = GetColor(cell.color);
                     coloredBodyPartsCount++;
                 }
             }

@@ -1,12 +1,15 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public Action<bool> OnGameCondition;
+    public Action OnFingerTap;
     public Action TimerStart;
     private int gateCount = 0;
     public bool isTimerStarted;
+    public bool isTutorial = true;
     public static GameManager Instance;
 
     private void Awake()
@@ -34,6 +37,11 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Game Won!");
             OnGameCondition?.Invoke(true);
+            var levelIndex = PlayerPrefs.GetInt("CurrentLevel", 1);
+            if (SceneManager.GetActiveScene().buildIndex == levelIndex)
+            {
+                PlayerPrefs.SetInt("CurrentLevel", levelIndex + 1);
+            }
         }
     }
 }

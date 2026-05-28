@@ -1,6 +1,5 @@
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
-using static UnityEngine.Rendering.DebugUI;
+
 
 public class GridFoodGateDrawer : MonoBehaviour
 {

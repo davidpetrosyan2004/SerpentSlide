@@ -26,13 +26,21 @@ public class Gate : CellObject
 
                     snakeControler.GetComponent<Snake>().enabled = true;
 
-                    Collider[] cols = snakeControler.snake.linkedSnake.GetComponentsInChildren<Collider>();
+                    Collider[] cols = snakeControler.snake.linkedSnake.transform.GetChild(0).GetComponentsInChildren<Collider>();
 
                     foreach (var col in cols)
                     {
                         col.enabled = true;
                     }
-                    MeshRenderer[] renderers = snakeControler.snake.linkedSnake.GetComponentsInChildren<MeshRenderer>();
+
+                    Collider[] cols2 = snakeControler.snake.linkedSnake.transform.GetComponentsInChildren<Collider>();
+
+                    foreach (var col in cols2)
+                    {
+                        col.enabled = true;
+                    }
+
+                    MeshRenderer[] renderers = snakeControler.snake.linkedSnake.transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
 
                     foreach (var r in renderers)
                     {

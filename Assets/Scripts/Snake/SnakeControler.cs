@@ -62,7 +62,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
             if (!snake.BodyParts.Contains(snake.HeadPrefab))
             {
                 snake.BodyParts.Reverse();
-                snake.BodyParts.Add(snake.HeadPrefab.parent);
+                snake.BodyParts.Add(snake.HeadPrefab);
             }
         }
         else
@@ -70,10 +70,10 @@ public class SnakeControler : MonoBehaviour, ISlidable
             slideObject = targetCollider.transform.parent;
             if (snake.linkedSnake != null)
             {
-                snake.linkedSnake.GetComponent<SnakeControler>().OnSlideStart(snake.linkedSnake.GetComponent<Snake>().HeadPrefab.GetComponent<Collider>(), worldPosition);
+                snake.linkedSnake.GetComponent<SnakeControler>().OnSlideStart(snake.linkedSnake.GetComponent<Snake>().HeadPrefab.transform.GetChild(0).GetComponent<Collider>(), worldPosition);
             }
             snake.GetComponent<Snake>().isReversed = false;
-            snake.BodyParts.Remove(snake.HeadPrefab.parent);
+            snake.BodyParts.Remove(snake.HeadPrefab);
             if (!snake.BodyParts.Contains(snake.TailPrefab))
             {
                 snake.BodyParts.Reverse();

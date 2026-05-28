@@ -35,27 +35,6 @@ public class Snake : MonoBehaviour
 
     private void Awake()
     {
-        if (linkedSnake != null)
-        {
-            linkedSnake.GetComponent<SnakeControler>().isLinked = true;
-            var snake = linkedSnake.GetComponent<Snake>();
-            snake.enabled = false;
-            var snakeControler = linkedSnake.GetComponent<SnakeControler>();
-
-            Collider[] cols = linkedSnake.GetComponentsInChildren<Collider>();
-
-            foreach (var col in cols)
-            {
-                col.enabled = false;
-            }
-
-            MeshRenderer[] renderers = snakeControler.GetComponentsInChildren<MeshRenderer>();
-
-            foreach (var r in renderers)
-            {
-                r.enabled = false;
-            }
-        }
         for (int i = 0; i < snakeData.rows; i++)
         {
             for (int j = 0; j < snakeData.columns; j++)
@@ -100,7 +79,34 @@ public class Snake : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        if (linkedSnake != null)
+        {
+            linkedSnake.GetComponent<SnakeControler>().isLinked = true;
+            var snakeControler = linkedSnake.GetComponent<SnakeControler>();
 
+            Collider[] cols = linkedSnake.transform.GetChild(0).GetComponentsInChildren<Collider>();
+
+            foreach (var col in cols)
+            {
+                col.enabled = false;
+            }
+            Collider[] cols2 = linkedSnake.transform.GetComponentsInChildren<Collider>();
+
+            foreach (var col in cols2)
+            {
+                col.enabled = false;
+            }
+
+            MeshRenderer[] renderers = linkedSnake.transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
+
+            foreach (var r in renderers)
+            {
+                r.enabled = false;
+            }
+        }
+    }
     private Texture GetTexture(SnakeData.ColorType colorType)
     {
         switch (colorType)

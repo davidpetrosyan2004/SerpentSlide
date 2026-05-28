@@ -74,8 +74,8 @@ public class SnakeDataDrawer : Editor
         selectedRotation = EditorGUILayout.IntPopup(
             "Rotation",
             selectedRotation,
-            new[] { "0", "60", "-60", "-120", "120", "180" },
-            new[] { 0, 60, -60, -120, 120, 180 }
+            new[] { "0", "90", "-90", "180" },
+            new[] { 0, 90, -90, 180 }
         );
     }
 

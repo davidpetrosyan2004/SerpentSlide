@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 65dcdfab6de586f4c84535d8c62035fd, type: 3}
-  m_Name: Lvl1Snake
+  m_Name: Lvl3Snake 1
   m_EditorClassIdentifier: Assembly-CSharp::SnakeData
-  columns: 5
-  rows: 4
+  columns: 6
+  rows: 6
   board:
   - column:
     - type: 0
@@ -31,6 +31,9 @@ MonoBehaviour:
     - type: 0
       indexBody: -1
       color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
   - column:
     - type: 0
       indexBody: -1
@@ -44,9 +47,12 @@ MonoBehaviour:
     - type: 0
       indexBody: -1
       color: 0
-    - type: 3
-      indexBody: 1
-      color: 4
+    - type: 0
+      indexBody: -1
+      color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
   - column:
     - type: 0
       indexBody: -1
@@ -60,13 +66,32 @@ MonoBehaviour:
     - type: 0
       indexBody: -1
       color: 0
-    - type: 2
-      indexBody: 0
-      color: 4
+    - type: 0
+      indexBody: -1
+      color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
   - column:
     - type: 0
       indexBody: -1
       color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
+  - column:
     - type: 0
       indexBody: -1
       color: 0
@@ -78,4 +103,29 @@ MonoBehaviour:
       color: 0
     - type: 1
       indexBody: 0
-      color: 4
+      color: 2
+    - type: 0
+      indexBody: -1
+      color: 0
+    - type: 0
+      indexBody: -1
+      color: 0
+  - column:
+    - type: 3
+      indexBody: 3
+      color: 2
+    - type: 2
+      indexBody: 2
+      color: 2
+    - type: 2
+      indexBody: 1
+      color: 2
+    - type: 2
+      indexBody: 0
+      color: 2
+    - type: 0
+      indexBody: -1
+      color: 0
+    - type: 0
+      indexBody: -1
+      color: 0

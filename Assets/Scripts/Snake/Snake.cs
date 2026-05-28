@@ -15,7 +15,6 @@ public class Snake : MonoBehaviour
     [Header("Data")]
     [SerializeField] private SnakeData snakeData;
     [SerializeField] private List<Texture> snakeTextures;
-    [SerializeField] public GameObject linkedSnake = null;
     private Color color;
 
     public bool isReversed { get; set; }
@@ -28,6 +27,7 @@ public class Snake : MonoBehaviour
     [SerializeField] private Vector3Int offset;
 
     public Snake lockSnake = null;
+    [SerializeField] public GameObject linkedSnake = null;
     public bool isLocked { get; set; }
     public bool isKey { get; set; }
     public GameObject lockImagePrefab = null;
@@ -39,7 +39,7 @@ public class Snake : MonoBehaviour
         {
             linkedSnake.GetComponent<SnakeControler>().isLinked = true;
             var snake = linkedSnake.GetComponent<Snake>();
-
+            snake.enabled = false;
             var snakeControler = linkedSnake.GetComponent<SnakeControler>();
 
             Collider[] cols = linkedSnake.GetComponentsInChildren<Collider>();

@@ -1,4 +1,6 @@
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
+using static UnityEngine.Rendering.DebugUI;
 
 public class GridFoodGateDrawer : MonoBehaviour
 {
@@ -21,18 +23,26 @@ public class GridFoodGateDrawer : MonoBehaviour
             for (int j = 0; j < foodGateData.board[i].column.Length; j++)
             {
                 var cell = foodGateData.board[i].column[j];
-                Vector3 position = gridTiles.GetTileWorldPosition(new Vector3Int(i, 0, j) + offset).Value.Item1;
-
+                var position = gridTiles.GetTileWorldPosition(new Vector3Int(i, 0, j) + offset);
+                Vector3 pos = Vector3.zero;
+                if (position != null)
+                {
+                    pos = position.Value.Item1;
+                }
+                else
+                {
+                    Debug.Log("Null");
+                }
                 if (cell.type == FoodGateData.CellType.F)
                 {
-                    var food = Instantiate(foodPrefab, position, Quaternion.identity);
+                    var food = Instantiate(foodPrefab, pos, Quaternion.identity);
                     food.GetComponent<CellObject>().color = GetColor(cell.colorType);
                     food.GetComponent<MeshRenderer>().material.color = GetColor(cell.colorType);
                 }
                 else if (cell.type == FoodGateData.CellType.G)
                 {
                     GameManager.Instance.AddGateCount();
-                    var gate = Instantiate(gatePrefab, position, Quaternion.identity);
+                    var gate = Instantiate(gatePrefab, pos, Quaternion.identity);
                     gate.GetComponent<CellObject>().color = GetColor(cell.colorType);
                     gate.GetComponent<MeshRenderer>().material.color = GetColor(cell.colorType);
                 }

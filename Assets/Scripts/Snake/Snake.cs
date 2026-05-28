@@ -27,30 +27,28 @@ public class Snake : MonoBehaviour
 
     [SerializeField] private Vector3Int offset;
 
-    public Snake keySnake = null;
-    private bool isLocked = false;
-    public GameObject lockImage;
+    public Snake lockSnake = null;
+    public bool isLocked { get; set; }
+    public bool isKey { get; set; }
+    public GameObject lockImagePrefab = null;
+    public GameObject keyImagePrefab = null;
 
     private void Awake()
     {
-        if (keySnake != null) 
-        {
-            isLocked = true;
-            var lockImagePrefab = Instantiate(lockImage, transform.position, Quaternion.identity, transform);
-            lockImagePrefab.transform.localScale = Vector3.one;
-            lockImagePrefab.transform.DOPunchScale(
-                new Vector3(0.2f, 0.2f, 0.2f), // сила увеличения
-                0.3f,                           // длительность
-                8,                              // vibrato
-                0.8f                            // elasticity
-            );
-        }
         if (linkedSnake != null)
         {
+            linkedSnake.GetComponent<SnakeControler>().isLinked = true;
             var snake = linkedSnake.GetComponent<Snake>();
 
             var snakeControler = linkedSnake.GetComponent<SnakeControler>();
- 
+
+            Collider[] cols = linkedSnake.GetComponentsInChildren<Collider>();
+
+            foreach (var col in cols)
+            {
+                col.enabled = false;
+            }
+
             MeshRenderer[] renderers = snakeControler.GetComponentsInChildren<MeshRenderer>();
 
             foreach (var r in renderers)
@@ -87,6 +85,17 @@ public class Snake : MonoBehaviour
         }
         BodyParts.Sort((a, b) => a.GetComponent<BodyPart>().index.CompareTo(b.GetComponent<BodyPart>().index));
         BodyParts.Add(TailPrefab);
+
+        if (lockImagePrefab != null)
+        {
+            isLocked = true;
+            InitSpriteObject(lockImagePrefab);
+        }
+        if (keyImagePrefab != null)
+        {
+            isKey = true;
+            InitSpriteObject(keyImagePrefab);
+        }
     }
 
 
@@ -148,5 +157,19 @@ public class Snake : MonoBehaviour
             TailPrefab.GetComponent<BodyPart>().SetColor(color);
             coloredBodyPartsCount--;
         }
+    }
+
+    public void InitSpriteObject(GameObject sprite)
+    {
+        sprite.transform.rotation = Quaternion.Euler(90, 0, 0);
+        sprite.transform.position = HeadPrefab.position + new Vector3(0, 0.4f, 0);
+        sprite.transform.SetParent(HeadPrefab.transform);
+        sprite.transform.localScale = new Vector3(0.25f, 0.25f, 0.25f);
+        sprite.transform.DOPunchScale(
+            new Vector3(0.2f, 0.2f, 0.2f),
+            0.3f,
+            8,
+            0.8f
+        );
     }
 }           

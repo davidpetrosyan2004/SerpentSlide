@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,16 +21,22 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     private bool isReached = false;
     private bool isMoving = false;
+    private bool isKeyMoving = false;
     public bool isDiving { get; set; }
 
     public Vector3[] DivePositions { get; set; }
     public Gate gate { get; set; }
     private int diveIndex;
-    public bool isLinked = false;
+    public bool isLinked { get; set; } = false;
 
     public void OnSlideStart(Collider targetCollider, Vector3 worldPosition)
     {
-        if (isDiving) return;
+        if (!GameManager.Instance.isTimerStarted)
+        {
+            GameManager.Instance.isTimerStarted = true;
+            GameManager.Instance.TimerStart?.Invoke();
+        }
+        if (isDiving || snake.isLocked) return;
         if (!isLinked)
             gridTiles.Tag = targetCollider.GetComponent<SnakePart>().color;
         Debug.Log(gridTiles.Tag);
@@ -127,9 +134,23 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     private void Update()
     {
+        if (snake.isLocked) return;
         if (isDiving)
         {
-            
+            if (snake.isKey && !isKeyMoving)
+            {
+                isKeyMoving = true;
+                snake.keyImagePrefab.transform.SetParent(null);
+                snake.keyImagePrefab.transform.DOMove(snake.lockSnake.lockImagePrefab.transform.position, 1f).SetEase(Ease.InOutCirc).OnComplete(
+                    () =>
+                    {
+                        snake.lockSnake.isLocked = false;
+                        snake.isKey = false;
+                        Destroy(snake.keyImagePrefab);
+                        Destroy(snake.lockSnake.lockImagePrefab);
+                    }
+                    );
+            }
             if (diveIndex >= DivePositions.Length)
             {
                 isDiving = false;

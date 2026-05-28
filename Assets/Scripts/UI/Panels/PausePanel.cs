@@ -7,6 +7,9 @@ public class PausePanel : MonoBehaviour
     private bool isPauseGame;
     public void PanelClose()
     {
+        AudioManager.Instance.PlaySound("ButtonClick");
+        isPauseGame = false;
+
         pauseGamePanel.transform.DOKill();
         pauseGamePanel.transform
                 .DOScale(0f, 0.4f)
@@ -14,6 +17,8 @@ public class PausePanel : MonoBehaviour
     }
     public void PanelPopUp()
     {
+        AudioManager.Instance.PlaySound("ButtonClick");
+        isPauseGame = true;
         pauseGamePanel.SetActive(true);
 
         pauseGamePanel.transform.localScale = Vector3.zero;
@@ -26,15 +31,12 @@ public class PausePanel : MonoBehaviour
 
     public void PausePanelPopUp()
     {
-        AudioManager.Instance.PlaySound("ButtonClick");
         if (isPauseGame)
         {
-            isPauseGame = false;
             PanelClose();
         }
         else
         {
-            isPauseGame = true;
             PanelPopUp();
         }
     }

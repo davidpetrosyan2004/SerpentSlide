@@ -16,159 +16,37 @@ MonoBehaviour:
   rows: 7
   board:
   - column:
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 2
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
-  - column:
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 1
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-  - column:
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 1
-    - type: 0
+    - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
+      colorType: 1
+    - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
+      colorType: 1
+    - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
+      colorType: 1
+    - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-  - column:
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-  - column:
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-  - column:
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-    - type: 0
-      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 0
-  - column:
+      colorType: 1
     - type: 2
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 3
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+  - column:
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
     - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 0
@@ -181,6 +59,128 @@ MonoBehaviour:
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 3
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+  - column:
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+  - column:
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 1
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 1
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+  - column:
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 1
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 1
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+  - column:
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+  - column:
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
+    - type: 0
+      color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+      colorType: 0
     - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 0

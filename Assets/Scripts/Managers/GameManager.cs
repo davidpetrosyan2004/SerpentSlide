@@ -4,7 +4,9 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public Action<bool> OnGameCondition;
+    public Action TimerStart;
     private int gateCount = 0;
+    public bool isTimerStarted;
     public static GameManager Instance;
 
     private void Awake()

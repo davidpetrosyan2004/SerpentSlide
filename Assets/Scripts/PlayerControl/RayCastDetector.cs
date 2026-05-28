@@ -43,7 +43,7 @@ public class RayCastDetector : MonoBehaviour
         {
             return false;
         }
-        if (!hit.collider.enabled) return false;
+        //if (!hit.collider.enabled) return false;
         target = hit.collider.GetComponentInParent<T>();
         return target != null;
     }

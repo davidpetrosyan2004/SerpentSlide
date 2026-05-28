@@ -66,4 +66,29 @@ public class AudioManager : MonoBehaviour
         }
         return null;
     }
+
+    public void AudioMute()
+    {
+        foreach (var sound in sounds)
+        {
+            sound.source.volume = 0f;
+        }
+    }
+    public void AudioOn()
+    {
+        foreach (var sound in sounds)
+        {
+            if (sound.name == "ColorChange")
+            {
+                sound.source.volume = 0.3f;
+                continue;
+            }
+            else if(sound.name == "Win")
+            {
+                sound.source.volume = 0.8f;
+            }
+            sound.source.volume = 0.5f;
+
+        }
+    }
 }

@@ -10,7 +10,7 @@ public class Food : CellObject
         if (other.CompareTag("Head") || other.CompareTag("Tail"))
         {
             Snake snake = other.GetComponentInParent<Snake>();
-
+            Debug.Log(other.tag);
             if (snake != null && snake.coloredBodyPartsCount > 0)
             {
                 AudioManager.Instance.PlaySound("ColorChange", true);

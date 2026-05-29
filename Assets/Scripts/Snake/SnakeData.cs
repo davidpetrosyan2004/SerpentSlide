@@ -8,7 +8,11 @@ public class SnakeData : ScriptableObject
         E,
         H,
         B,
-        T
+        T,
+        UR,
+        UL,
+        DR,
+        DL
     }
 
     public enum ColorType

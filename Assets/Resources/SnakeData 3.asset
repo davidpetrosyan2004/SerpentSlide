@@ -221,19 +221,19 @@ MonoBehaviour:
     - type: 2
       indexBody: 0
       color: 0
-      rotation: 0
+      rotation: 90
     - type: 2
       indexBody: 1
       color: 0
-      rotation: 0
+      rotation: 90
     - type: 2
       indexBody: 2
       color: 0
-      rotation: 0
+      rotation: 90
     - type: 3
-      indexBody: 2
+      indexBody: 0
       color: 4
-      rotation: 0
+      rotation: 90
     - type: 0
       indexBody: -1
       color: 0

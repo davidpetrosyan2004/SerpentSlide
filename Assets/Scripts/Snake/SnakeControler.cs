@@ -1,5 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class SnakeControler : MonoBehaviour, ISlidable
@@ -23,6 +25,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
     private bool isMoving = false;
     private bool isKeyMoving = false;
     public bool isDiving { get; set; }
+    public bool isBodyPartsMoving;
 
     public Vector3[] DivePositions { get; set; }
     public Gate gate { get; set; }
@@ -44,13 +47,13 @@ public class SnakeControler : MonoBehaviour, ISlidable
         if (isDiving || snake.isLocked) return;
         if (!isLinked)
             gridTiles.Tag = targetCollider.GetComponent<SnakePart>().color;
-        Debug.Log(gridTiles.Tag);
+
         gridTiles.SetWalkablesOnBoard();
+        slideObject = targetCollider.transform;
 
         positionsHistory.Clear();
         if (targetCollider.CompareTag("Tail"))
         {
-            slideObject = targetCollider.transform;
             if (snake.linkedSnake != null)
             {
                 Debug.Log("Notifying linked snake about tail slide start");
@@ -67,7 +70,6 @@ public class SnakeControler : MonoBehaviour, ISlidable
         }
         else
         {
-            slideObject = targetCollider.transform.parent;
             if (snake.linkedSnake != null)
             {
                 snake.linkedSnake.GetComponent<SnakeControler>().OnSlideStart(snake.linkedSnake.GetComponent<Snake>().HeadPrefab.transform.GetChild(0).GetComponent<Collider>(), worldPosition);
@@ -265,22 +267,53 @@ public class SnakeControler : MonoBehaviour, ISlidable
 
     private void MoveBodyParts()
     {
-        //Debug.Log("Body Count: " + snake.BodyParts.Count);
         int index = 0;
+        Transform previous = null;
         foreach (var bodyPart in snake.BodyParts)
         {
             Vector3 point = positionsHistory[Mathf.Min(index * spacing, positionsHistory.Count - 1)];
-            bodyPart.transform.position= Vector3.MoveTowards(bodyPart.transform.position, point, moveSpeed * Time.deltaTime);
-            Vector3 direction = point - slideObject.position;
+            Vector3 direction = point - bodyPart.position;
 
-            if (direction != Vector3.zero)
+            if (index == 0)
+            {
+                var currScript = bodyPart.GetComponent<BodyPart>();
+                var preDir = -slideObject.right;
+                Debug.DrawRay(slideObject.position, preDir * 10f, Color.blue, 10);
+                Debug.DrawRay(bodyPart.position, direction * 10f, Color.yellow, 10);
+                SetGraphicPrevious(preDir, direction, currScript);
+                previous = bodyPart;
+            }
+            else if (index == snake.BodyParts.Count - 1)
             {
                 Quaternion targetRotation =
-        Quaternion.LookRotation(direction) *
-        Quaternion.Euler(0, 90, 0);
+                    Quaternion.LookRotation(previous.transform.forward);
 
                 bodyPart.rotation = targetRotation;
             }
+            else if(index != snake.BodyParts.Count - 1)
+            {
+                var preScript = bodyPart.GetComponent<BodyPart>();
+                var preDir = previous.right;
+
+                SetGraphicPrevious(preDir, direction, preScript);
+                previous = bodyPart;
+            }
+            bodyPart.transform.position= Vector3.MoveTowards(bodyPart.transform.position, point, moveSpeed * Time.deltaTime);
+
+            direction = point - bodyPart.position;
+
+            if (direction != Vector3.zero && index != snake.BodyParts.Count-1)
+            {
+                Quaternion targetRotation =
+                    Quaternion.LookRotation(direction) *
+                    Quaternion.Euler(0, -90, 0);
+
+                bodyPart.rotation = targetRotation;
+            }
+
+
+
+
             if (Vector3.Distance(bodyPart.transform.position, point) < 0.01f)
             {
                 bodyPart.transform.position = point;
@@ -319,5 +352,85 @@ public class SnakeControler : MonoBehaviour, ISlidable
     public bool IsSnakeFilled()
     {
         return snake.coloredBodyPartsCount == 0;
+    }
+
+    public void SetGraphicPrevious(Vector3 preDir, Vector3 direction, BodyPart preScript)
+    {
+        if (Vector3.Dot(direction, Vector3.left) >= 0.6)
+        {
+            if (Vector3.Dot(preDir, Vector3.left) >= 0.6)
+            {
+                Debug.Log("0");
+                preScript.SetGraphic("straight");
+            }
+            else if (Vector3.Dot(preDir, Vector3.forward) >= 0.6)
+            {
+                Debug.Log("1");
+                preScript.SetGraphic("DL corner");
+            }
+            else if (Vector3.Dot(preDir, Vector3.back) >= 0.6)
+            {
+                Debug.Log("2");
+                preScript.SetGraphic("DR corner");
+            }
+
+        }
+        else if (Vector3.Dot(direction, Vector3.right) >= 0.6)
+        {
+            if (Vector3.Dot(preDir, Vector3.right) >= 0.6)
+            {
+                Debug.Log("3");
+                preScript.SetGraphic("straight");
+            }
+            else if (Vector3.Dot(preDir, Vector3.forward) >= 0.6)
+            {
+                Debug.Log("4");
+                preScript.SetGraphic("DR corner");
+            }
+            else if (Vector3.Dot(preDir, Vector3.back) >= 0.6)
+            {
+                Debug.Log("5");
+                preScript.SetGraphic("DL corner");
+            }
+
+        }
+        else if (Vector3.Dot(direction, Vector3.forward) >= 0.6)
+        {
+            if (Vector3.Dot(preDir, Vector3.forward) >= 0.6)
+            {
+                Debug.Log("6");
+                preScript.SetGraphic("straight");
+            }
+            else if (Vector3.Dot(preDir, Vector3.left) >= 0.6)
+            {
+                Debug.Log("7");
+                preScript.SetGraphic("DR corner");
+            }
+            else if (Vector3.Dot(preDir, Vector3.right) >= 0.6)
+            {
+                Debug.Log("8");
+                preScript.SetGraphic("DL corner");
+            }
+
+        }
+        else if (Vector3.Dot(direction, Vector3.back) >= 0.6)
+        {
+            if (Vector3.Dot(preDir, Vector3.back) >= 0.6)
+            {
+                Debug.Log("9");
+                preScript.SetGraphic("straight");
+            }
+            else if (Vector3.Dot(preDir, Vector3.left) >= 0.6)
+            {
+                Debug.Log("10");
+                preScript.SetGraphic("DL corner");
+            }
+            else if (Vector3.Dot(preDir, Vector3.right) >= 0.6)
+            {
+                Debug.Log("11");
+                preScript.SetGraphic("DR corner");
+            }
+
+        }
     }
 }

@@ -69,7 +69,7 @@ public class GridTiles : MonoBehaviour
                     }
                 }
                 bool walkable = !isBlocked && tile != null;
-                Debug.DrawRay(worldPos, Vector3.up * 20f, walkable ? Color.green : Color.red,2f);
+                //Debug.DrawRay(worldPos, Vector3.up * 20f, walkable ? Color.green : Color.red,2f);
 
                 gridMap[pos].walkable = walkable;
             }

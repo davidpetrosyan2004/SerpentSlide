@@ -241,7 +241,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -306}
+  m_AnchoredPosition: {x: 0, y: -410}
   m_SizeDelta: {x: 400, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &234160352156457934
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 340824982, guid: 8029470c016a64c46b3fad54e0c6b776, type: 3}
+  m_Sprite: {fileID: 774880413, guid: fb9b1b74b34552d48a661d3558c5d68b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1890,11 +1890,13 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: ac0604d067f66b44d97d5d58432e60a0, type: 2}
   snakeTextures: []
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 4331230705174226150}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 993324873226375825}
+  isTutorial: 0
 --- !u!114 &8478336073975551006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2020,9 +2022,9 @@ RectTransform:
   - {fileID: 96461829891688643}
   m_Father: {fileID: 2375118634701069963}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 89, y: -50}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -157}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2371192242874153427
@@ -2059,8 +2061,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 101, y: -47}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: 11, y: -491}
+  m_SizeDelta: {x: 278, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1210274521486775272
 CanvasRenderer:
@@ -2101,8 +2103,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287233023
-  m_fontColor: {r: 1, g: 0.9843965, b: 0.5377357, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2119,13 +2121,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 80
+  m_fontSizeBase: 80
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3009,7 +3011,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62, y: 1100.27}
+  m_AnchoredPosition: {x: 45, y: 996.27}
   m_SizeDelta: {x: 342.8, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4343930348105102793
@@ -3519,7 +3521,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4283883007
-  m_fontColor: {r: 1, g: 0.86511105, b: 0.33647794, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4059,11 +4061,13 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: 0c3102cde9d213c4c9241951ebfc642d, type: 2}
   snakeTextures: []
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!114 &1685985055154324140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4633,11 +4637,13 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: 844e5a0d61ec4e84fa3cb9f77b66094b, type: 2}
   snakeTextures: []
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 6131922696413135430}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!114 &650811276560247005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5015,8 +5021,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4283883007
-  m_fontColor: {r: 1, g: 0.86511105, b: 0.33647794, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5710,11 +5716,13 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: 11e45dfff75b9ab44a0870ba68775bcf, type: 2}
   snakeTextures: []
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!114 &5021733511712960321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5921,11 +5929,13 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: fb171d009aee6b74dbc0a08cf4b4dc0e, type: 2}
   snakeTextures: []
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 6320339515585084682}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!114 &3822414432938107627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6325,8 +6335,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 104, y: -48}
-  m_SizeDelta: {x: 238, y: 108.8}
+  m_AnchoredPosition: {x: 0, y: -491}
+  m_SizeDelta: {x: 574.6, y: 173.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &614554991638388674
 CanvasRenderer:
@@ -6356,7 +6366,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1846523539, guid: 79a055abcb5a5fc49b30e07e4b27412f, type: 3}
+  m_Sprite: {fileID: 774880413, guid: fb9b1b74b34552d48a661d3558c5d68b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

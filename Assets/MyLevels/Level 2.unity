@@ -4854,12 +4854,21 @@ MonoBehaviour:
   tailPrefab: {fileID: 4328514388940961773, guid: a37d0ae83ba46f2458dd3d4aafe25150, type: 3}
   gridTiles: {fileID: 1243574827}
   snakeData: {fileID: 11400000, guid: 2811190fafa95cc43bbc57a6e56f9208, type: 2}
-  snakeTextures: []
+  snakeTextures:
+  - {fileID: 2800000, guid: 27403257218abc6428653c6799387e81, type: 3}
+  - {fileID: 2800000, guid: 0de9e772bffdef144b39151cf180abbf, type: 3}
+  - {fileID: 2800000, guid: f97b363ecabeca64bb49ba71e27bd6fc, type: 3}
+  - {fileID: 2800000, guid: 71d6a32b57e743a4698668b9b55ec8d6, type: 3}
+  - {fileID: 2800000, guid: df43e7579cde9434eabc3d41615ab4ce, type: 3}
+  - {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
+  - {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -5, y: 0, z: 0}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!4 &814727269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489470461532594357, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
@@ -11469,12 +11478,21 @@ MonoBehaviour:
   tailPrefab: {fileID: 4328514388940961773, guid: a37d0ae83ba46f2458dd3d4aafe25150, type: 3}
   gridTiles: {fileID: 1243574827}
   snakeData: {fileID: 11400000, guid: 12f64208aa12bdd4cbf0162526a3ffaf, type: 2}
-  snakeTextures: []
+  snakeTextures:
+  - {fileID: 2800000, guid: 27403257218abc6428653c6799387e81, type: 3}
+  - {fileID: 2800000, guid: 0de9e772bffdef144b39151cf180abbf, type: 3}
+  - {fileID: 2800000, guid: f97b363ecabeca64bb49ba71e27bd6fc, type: 3}
+  - {fileID: 2800000, guid: 71d6a32b57e743a4698668b9b55ec8d6, type: 3}
+  - {fileID: 2800000, guid: df43e7579cde9434eabc3d41615ab4ce, type: 3}
+  - {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
+  - {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -5, y: 0, z: 0}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!4 &1850986012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489470461532594357, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
@@ -12594,7 +12612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 96461829891688643, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -72.74
+      value: -585
       objectReference: {fileID: 0}
     - target: {fileID: 365177347437027914, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: headPrefab
@@ -12632,6 +12650,38 @@ PrefabInstance:
       propertyPath: tailPrefab
       value: 
       objectReference: {fileID: 4328514388940961773, guid: a37d0ae83ba46f2458dd3d4aafe25150, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: snakeTextures.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 27403257218abc6428653c6799387e81, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 0de9e772bffdef144b39151cf180abbf, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: f97b363ecabeca64bb49ba71e27bd6fc, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 71d6a32b57e743a4698668b9b55ec8d6, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: df43e7579cde9434eabc3d41615ab4ce, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
     - target: {fileID: 3712133913638909177, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: lockSnake
       value: 
@@ -13228,6 +13278,10 @@ PrefabInstance:
       propertyPath: s_Time
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6673134709888655510, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: isTutorial
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: offset.x
       value: -5
@@ -13236,6 +13290,10 @@ PrefabInstance:
       propertyPath: offset.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: foodPrefab
+      value: 
+      objectReference: {fileID: 9190709065342253733, guid: a0a9c2c4f36482f4ca6a6b6ec7af1c18, type: 3}
     - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: foodGateData
       value: 
@@ -13246,6 +13304,14 @@ PrefabInstance:
 
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030849416983598762, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_margin.w
+      value: 49.061035
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030849416983598762, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_margin.y
+      value: -63.66089
       objectReference: {fileID: 0}
     - target: {fileID: 8145029753585700814, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_IsActive

@@ -4862,11 +4862,13 @@ MonoBehaviour:
   - {fileID: 2800000, guid: df43e7579cde9434eabc3d41615ab4ce, type: 3}
   - {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
   - {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -5, y: 0, z: 0}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!4 &814727269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489470461532594357, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
@@ -11484,11 +11486,13 @@ MonoBehaviour:
   - {fileID: 2800000, guid: df43e7579cde9434eabc3d41615ab4ce, type: 3}
   - {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
   - {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -5, y: 0, z: 0}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!4 &1850986012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489470461532594357, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
@@ -12608,7 +12612,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 96461829891688643, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -72.74
+      value: -585
       objectReference: {fileID: 0}
     - target: {fileID: 365177347437027914, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: headPrefab
@@ -13274,6 +13278,10 @@ PrefabInstance:
       propertyPath: s_Time
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6673134709888655510, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: isTutorial
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: offset.x
       value: -5
@@ -13296,6 +13304,14 @@ PrefabInstance:
 
 
 '
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030849416983598762, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_margin.w
+      value: 49.061035
+      objectReference: {fileID: 0}
+    - target: {fileID: 7030849416983598762, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_margin.y
+      value: -63.66089
       objectReference: {fileID: 0}
     - target: {fileID: 8145029753585700814, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_IsActive

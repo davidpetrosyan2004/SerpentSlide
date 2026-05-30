@@ -18,7 +18,8 @@ public class SnakeData : ScriptableObject
     public enum ColorType
     {
         None,
-        Red,
+        Purple,
+        Pink,
         Blue,
         Green,
         Yellow,
@@ -31,6 +32,7 @@ public class SnakeData : ScriptableObject
         public int indexBody;
         public ColorType color;
         public int rotation;
+        public Vector3 offset;
     }
 
     [System.Serializable]

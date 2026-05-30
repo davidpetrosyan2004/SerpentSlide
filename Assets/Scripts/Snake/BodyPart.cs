@@ -17,21 +17,21 @@ public class BodyPart : MonoBehaviour
 
 
     public int index { get; set; }
-    public Color color { get; set; }
+    public Texture texture { get; set; }
 
-    public void SetColor(Color newColor)
+    public void SetColor(Texture newTexture)
     {
-        color = newColor;
-        straightMesh.material.color = color;
-        cornerUpRightMesh.material.color = color;
-        cornerUpLeftMesh.material.color = color;
-        cornerDownLeftMesh.material.color = color;
-        cornerDownRightMesh.material.color = color;
+        texture = newTexture;
+        straightMesh.material.SetTexture("_BaseMap", texture);
+        cornerUpRightMesh.material.SetTexture("_BaseMap", texture);
+        cornerUpLeftMesh.material.SetTexture("_BaseMap", texture);
+        cornerDownLeftMesh.material.SetTexture("_BaseMap", texture);
+        cornerDownRightMesh.material.SetTexture("_BaseMap", texture);
 
         var effect = Instantiate(colorChangeEffect, transform.position, Quaternion.identity, transform);
 
         var renderer = effect.GetComponent<ParticleSystemRenderer>();
-        renderer.material.color = color;
+        renderer.material.SetTexture("_MainTex", texture);
 
         effect.Play();
     }

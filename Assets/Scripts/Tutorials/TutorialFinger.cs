@@ -1,10 +1,19 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class TutorialFinger : MonoBehaviour, IPointerEnterHandler
+public class TutorialFinger : MonoBehaviour
 {
-    public void OnPointerEnter(PointerEventData eventData)
+    private void Awake()
     {
+        GameManager.Instance.OnFingerTap += OnTutorialOver;
+    }
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnFingerTap -= OnTutorialOver;
+    }
+
+    public void OnTutorialOver()
+    {
+        GameManager.Instance.isTutorial = false;
         Destroy(gameObject);
     }
 }

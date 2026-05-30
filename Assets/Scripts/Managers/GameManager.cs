@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public Action TimerStart;
     private int gateCount = 0;
     public bool isTimerStarted;
-    public bool isTutorial = true;
+    public bool isTutorial = false;
     public static GameManager Instance;
 
     private void Awake()

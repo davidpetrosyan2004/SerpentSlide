@@ -36,8 +36,11 @@ public class SnakeControler : MonoBehaviour, ISlidable
     {
         if (GameManager.Instance.isTutorial)
         {
-            GameManager.Instance.isTutorial = false;
-            GameManager.Instance.OnFingerTap?.Invoke();
+            if (snake.isTutorial)
+            {
+                GameManager.Instance.OnFingerTap?.Invoke();
+            }
+            return;
         }
         if (!GameManager.Instance.isTimerStarted)
         {
@@ -46,7 +49,9 @@ public class SnakeControler : MonoBehaviour, ISlidable
         }
         if (isDiving || snake.isLocked) return;
         if (!isLinked)
+        {
             gridTiles.Tag = targetCollider.GetComponent<SnakePart>().color;
+        }
 
         gridTiles.SetWalkablesOnBoard();
         slideObject = targetCollider.transform;
@@ -197,10 +202,14 @@ public class SnakeControler : MonoBehaviour, ISlidable
         }
 
         if (slideObject == null)
+        {
             return;
+        }
 
         if (currentPath == null || currentPath.Count <= 0)
+        {
             return;
+        }
 
         Vector3 targetPos =
             gridTiles.tilemap.GetCellCenterWorld(currentPath[pathIndex]);
@@ -265,6 +274,15 @@ public class SnakeControler : MonoBehaviour, ISlidable
         return gridTiles.GetTileWorldPosition(worldPosition);
     }
 
+    public void CorrectingPosBodyParts()
+    {
+        foreach (var bodyPart in snake.BodyParts)
+        {
+            var posTile = gridTiles.GetTileWorldPosition(bodyPart.position).Value.Item1;
+            bodyPart.position = posTile;
+        }
+    }
+
     private void MoveBodyParts()
     {
         int index = 0;
@@ -278,8 +296,8 @@ public class SnakeControler : MonoBehaviour, ISlidable
             {
                 var currScript = bodyPart.GetComponent<BodyPart>();
                 var preDir = -slideObject.right;
-                Debug.DrawRay(slideObject.position, preDir * 10f, Color.blue, 10);
-                Debug.DrawRay(bodyPart.position, direction * 10f, Color.yellow, 10);
+                //Debug.DrawRay(slideObject.position, preDir * 10f, Color.blue, 10);
+                //Debug.DrawRay(bodyPart.position, direction * 10f, Color.yellow, 10);
                 SetGraphicPrevious(preDir, direction, currScript);
                 previous = bodyPart;
             }
@@ -360,17 +378,14 @@ public class SnakeControler : MonoBehaviour, ISlidable
         {
             if (Vector3.Dot(preDir, Vector3.left) >= 0.6)
             {
-                Debug.Log("0");
                 preScript.SetGraphic("straight");
             }
             else if (Vector3.Dot(preDir, Vector3.forward) >= 0.6)
             {
-                Debug.Log("1");
                 preScript.SetGraphic("DL corner");
             }
             else if (Vector3.Dot(preDir, Vector3.back) >= 0.6)
             {
-                Debug.Log("2");
                 preScript.SetGraphic("DR corner");
             }
 
@@ -379,17 +394,14 @@ public class SnakeControler : MonoBehaviour, ISlidable
         {
             if (Vector3.Dot(preDir, Vector3.right) >= 0.6)
             {
-                Debug.Log("3");
                 preScript.SetGraphic("straight");
             }
             else if (Vector3.Dot(preDir, Vector3.forward) >= 0.6)
             {
-                Debug.Log("4");
                 preScript.SetGraphic("DR corner");
             }
             else if (Vector3.Dot(preDir, Vector3.back) >= 0.6)
             {
-                Debug.Log("5");
                 preScript.SetGraphic("DL corner");
             }
 
@@ -398,17 +410,14 @@ public class SnakeControler : MonoBehaviour, ISlidable
         {
             if (Vector3.Dot(preDir, Vector3.forward) >= 0.6)
             {
-                Debug.Log("6");
                 preScript.SetGraphic("straight");
             }
             else if (Vector3.Dot(preDir, Vector3.left) >= 0.6)
             {
-                Debug.Log("7");
                 preScript.SetGraphic("DR corner");
             }
             else if (Vector3.Dot(preDir, Vector3.right) >= 0.6)
             {
-                Debug.Log("8");
                 preScript.SetGraphic("DL corner");
             }
 
@@ -417,17 +426,14 @@ public class SnakeControler : MonoBehaviour, ISlidable
         {
             if (Vector3.Dot(preDir, Vector3.back) >= 0.6)
             {
-                Debug.Log("9");
                 preScript.SetGraphic("straight");
             }
             else if (Vector3.Dot(preDir, Vector3.left) >= 0.6)
             {
-                Debug.Log("10");
                 preScript.SetGraphic("DL corner");
             }
             else if (Vector3.Dot(preDir, Vector3.right) >= 0.6)
             {
-                Debug.Log("11");
                 preScript.SetGraphic("DR corner");
             }
 

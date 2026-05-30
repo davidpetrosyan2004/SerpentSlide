@@ -6,11 +6,12 @@ public class FoodGateData : ScriptableObject
     public enum ColorType
     {
         None,
-        Red,
+        Purple,
         Blue,
         Green,
         Yellow,
         Orange,
+        Pink
     }
 
     public enum CellType

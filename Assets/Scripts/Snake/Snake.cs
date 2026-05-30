@@ -15,7 +15,8 @@ public class Snake : MonoBehaviour
     [Header("Data")]
     [SerializeField] private SnakeData snakeData;
     [SerializeField] private List<Texture> snakeTextures;
-    private Color color;
+    private Texture texture;
+    public Color color;
 
     public bool isReversed { get; set; }
     public int coloredBodyPartsCount { get; set; }
@@ -33,6 +34,8 @@ public class Snake : MonoBehaviour
     public GameObject lockImagePrefab = null;
     public GameObject keyImagePrefab = null;
 
+    public bool isTutorial;
+
     private void Awake()
     {
         for (int i = 0; i < snakeData.rows; i++)
@@ -44,10 +47,13 @@ public class Snake : MonoBehaviour
                 if (snakeData.board[i].column[j].type == SnakeData.CellType.H)
                 {
                     HeadPrefab = Instantiate(headPrefab, spawnPos, Quaternion.Euler(0, cell.rotation, 0), transform);
-                    color = GetColor(cell.color);
+                    texture = GetTexture(cell.color);
+                    Debug.Log(texture);
                     var HeadScript = HeadPrefab.GetComponent<SnakePart>();
+                    HeadScript.texture = texture;
+                    HeadScript.partMesh.material.SetTexture("_BaseMap", texture);
+                    color = GetColor(cell.color);
                     HeadScript.color = color;
-                    HeadScript.partMesh.material.color = color;
                 }
                 else if (cell.type == SnakeData.CellType.B)
                 { 
@@ -67,7 +73,7 @@ public class Snake : MonoBehaviour
                 }
                 else if (cell.type == SnakeData.CellType.UL)
                 { 
-                    var bodyPart = Instantiate(bodyPrefab, spawnPos + new Vector3(0.25f, 0, 0), Quaternion.identity, transform);
+                    var bodyPart = Instantiate(bodyPrefab, spawnPos, Quaternion.identity, transform);
                     var bodyScript = bodyPart.GetComponent<BodyPart>();
                     bodyScript.index = snakeData.board[i].column[j].indexBody;
                     bodyScript.SetGraphic("UL corner");
@@ -95,6 +101,7 @@ public class Snake : MonoBehaviour
                 else if (cell.type == SnakeData.CellType.T)
                 {
                     TailPrefab = Instantiate(tailPrefab, spawnPos, Quaternion.Euler(0, cell.rotation, 0), transform);
+                    //TailPrefab.GetComponent<SnakePart>().texture = GetTexture(cell.color);
                     TailPrefab.GetComponent<SnakePart>().color = GetColor(cell.color);
                     coloredBodyPartsCount++;
                 }
@@ -147,29 +154,30 @@ public class Snake : MonoBehaviour
     {
         switch (colorType)
         {
-            case SnakeData.ColorType.None: return null;
-            case SnakeData.ColorType.Red: return snakeTextures[0];
+            case SnakeData.ColorType.None: return snakeTextures[0];
             case SnakeData.ColorType.Blue: return  snakeTextures[1];
             case SnakeData.ColorType.Green: return snakeTextures[2];
             case SnakeData.ColorType.Yellow: return snakeTextures[3];
             case SnakeData.ColorType.Orange: return snakeTextures[4];
+            case SnakeData.ColorType.Pink: return snakeTextures[5];
+            case SnakeData.ColorType.Purple: return snakeTextures[6];
             default: return null;
         }
     }
-    private Color GetColor(SnakeData.ColorType colorType)
+    private Color GetColor(SnakeData.ColorType type)
     {
-        switch (colorType)
+        switch (type)
         {
             case SnakeData.ColorType.None: return Color.gray;
-            case SnakeData.ColorType.Red: return Color.red;
-            case SnakeData.ColorType.Blue: return Color.blue;
+            case SnakeData.ColorType.Blue: return new Color32(96, 180, 210, 255);
             case SnakeData.ColorType.Green: return Color.green;
             case SnakeData.ColorType.Yellow: return Color.yellow;
-            case SnakeData.ColorType.Orange: return Color.Lerp(Color.red, Color.yellow, 0.5f);
+            case SnakeData.ColorType.Orange: return Color.orange;
+            case SnakeData.ColorType.Pink: return Color.pink;
+            case SnakeData.ColorType.Purple: return Color.purple;
             default: return Color.gray;
         }
     }
-
     public void BodyPartFillColor()
     {
         if (!isReversed)
@@ -179,14 +187,16 @@ public class Snake : MonoBehaviour
                 if (i == BodyParts.Count - 1)
                 {
                     Debug.Log("Colored Tail not reversed");
-                    BodyParts[i].GetComponent<SnakePart>().SetColor(color);
+                    Debug.Log(texture);
+                    BodyParts[i].GetComponent<SnakePart>().SetColor(texture);
                     coloredBodyPartsCount--;
                     return;
                 }
-                else if (BodyParts[i].GetComponent<BodyPart>().color != color)
+                else if (BodyParts[i].GetComponent<BodyPart>().texture != texture)
                 {
                     Debug.Log("Colored Body not reversed");
-                    BodyParts[i].GetComponent<BodyPart>().SetColor(color);
+                    Debug.Log(texture);
+                    BodyParts[i].GetComponent<BodyPart>().SetColor(texture);
                     coloredBodyPartsCount--;
                     return;
                 }
@@ -197,11 +207,10 @@ public class Snake : MonoBehaviour
         {
             for (int i = BodyParts.Count - 2; i >= 0; i--)
             {
-                Debug.Log("Colored");
-                if (BodyParts[i].GetComponent<BodyPart>().color != color)
+                if (BodyParts[i].GetComponent<BodyPart>().texture != texture)
                 {
-                    Debug.Log("Colored");
-                    BodyParts[i].GetComponent<BodyPart>().SetColor(color);
+                    Debug.Log(texture);
+                    BodyParts[i].GetComponent<BodyPart>().SetColor(texture);
                     coloredBodyPartsCount--;
                     return;
                 }
@@ -209,7 +218,8 @@ public class Snake : MonoBehaviour
         }
         if (isReversed && coloredBodyPartsCount == 1)
         {
-            TailPrefab.GetComponent<SnakePart>().SetColor(color);
+            Debug.Log(texture);
+            TailPrefab.GetComponent<SnakePart>().SetColor(texture);
             coloredBodyPartsCount--;
         }
     }

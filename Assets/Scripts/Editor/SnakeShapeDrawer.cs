@@ -11,6 +11,7 @@ public class SnakeDataDrawer : Editor
     private SnakeData.ColorType selectedColor;
     private int selectedIndexBody;
     private int selectedRotation;
+    private Vector3 selectedOffset;
 
     public override void OnInspectorGUI()
     {
@@ -77,6 +78,7 @@ public class SnakeDataDrawer : Editor
             new[] { "0", "90", "-90", "180" },
             new[] { 0, 90, -90, 180 }
         );
+        selectedOffset = EditorGUILayout.Vector3Field("Offset", selectedOffset);
     }
 
     private void DrawButtons()
@@ -118,6 +120,7 @@ public class SnakeDataDrawer : Editor
                     cell.indexBody = selectedIndexBody;
                     cell.color = selectedColor;
                     cell.rotation = selectedRotation;
+                    cell.offset = selectedOffset;
 
                     EditorUtility.SetDirty(Data);
                 }
@@ -144,7 +147,8 @@ public class SnakeDataDrawer : Editor
         switch (type)
         {
             case SnakeData.ColorType.None: return Color.gray;
-            case SnakeData.ColorType.Red: return Color.red;
+            case SnakeData.ColorType.Purple: return Color.purple;
+            case SnakeData.ColorType.Pink: return Color.pink;
             case SnakeData.ColorType.Blue: return Color.blue;
             case SnakeData.ColorType.Green: return Color.green;
             case SnakeData.ColorType.Yellow: return Color.yellow;

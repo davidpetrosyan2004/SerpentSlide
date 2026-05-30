@@ -124,11 +124,12 @@ public class FoodGateDataDrawer : Editor
         switch (type)
         {
             case FoodGateData.ColorType.None: return Color.gray;
-            case FoodGateData.ColorType.Red: return Color.red;
+            case FoodGateData.ColorType.Purple: return Color.purple;
             case FoodGateData.ColorType.Blue: return Color.blue;
             case FoodGateData.ColorType.Green: return Color.green;
             case FoodGateData.ColorType.Yellow: return Color.yellow;
             case FoodGateData.ColorType.Orange: return Color.Lerp(Color.red, Color.yellow, 0.5f);
+            case FoodGateData.ColorType.Pink: return Color.pink;
             default: return Color.gray;
         }
     }

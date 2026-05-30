@@ -973,9 +973,49 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 948213604168896938, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940448352118050459, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_CullTransparentMesh
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169850848763009560, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_Type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169850848763009560, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 3169850848763009560, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169850848763009560, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_Maskable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169850848763009560, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169850848763009560, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3169850848763009560, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_RaycastPadding.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3942283455775120967, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
       propertyPath: m_Name
       value: Finger
+      objectReference: {fileID: 0}
+    - target: {fileID: 7415474020760268804, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      propertyPath: m_SortingOrder
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8554178599759437938, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1020,7 +1060,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9214411478548200154, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1797449196}
   m_SourcePrefab: {fileID: 100100000, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
 --- !u!4 &151658631 stripped
 Transform:
@@ -4910,13 +4953,22 @@ MonoBehaviour:
   headPrefab: {fileID: 7167088666820031427, guid: c8665fb7e1e50a84cb54a016a98533b8, type: 3}
   tailPrefab: {fileID: 4328514388940961773, guid: a37d0ae83ba46f2458dd3d4aafe25150, type: 3}
   gridTiles: {fileID: 1243574827}
-  snakeData: {fileID: 11400000, guid: 870f0b8b61e09d14d806c085c0fe6195, type: 2}
-  snakeTextures: []
+  snakeData: {fileID: 11400000, guid: bea5e8edfcbc1bb4392ad7daa6a91415, type: 2}
+  snakeTextures:
+  - {fileID: 2800000, guid: 27403257218abc6428653c6799387e81, type: 3}
+  - {fileID: 2800000, guid: 0de9e772bffdef144b39151cf180abbf, type: 3}
+  - {fileID: 2800000, guid: f97b363ecabeca64bb49ba71e27bd6fc, type: 3}
+  - {fileID: 2800000, guid: 71d6a32b57e743a4698668b9b55ec8d6, type: 3}
+  - {fileID: 2800000, guid: 3c7b8f883a0a456408f0333838b00ebf, type: 3}
+  - {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
+  - {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -5, y: 0, z: 0}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 1
 --- !u!4 &814727269 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489470461532594357, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
@@ -11112,6 +11164,25 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
+--- !u!1 &1797449192 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9214411478548200154, guid: 524cd7b575cc0c047851dc81ada60171, type: 3}
+  m_PrefabInstance: {fileID: 148629480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1797449196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797449192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3312d7739989d2b4e91e6319e9a96d76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RectMask2D
+  m_Padding: {x: 0, y: 0, z: 0, w: 0}
+  m_Softness: {x: 0, y: 0}
 --- !u!1001 &1807699694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12616,6 +12687,38 @@ PrefabInstance:
       propertyPath: tailPrefab
       value: 
       objectReference: {fileID: 4328514388940961773, guid: a37d0ae83ba46f2458dd3d4aafe25150, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: snakeTextures.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 27403257218abc6428653c6799387e81, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 0de9e772bffdef144b39151cf180abbf, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: f97b363ecabeca64bb49ba71e27bd6fc, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 71d6a32b57e743a4698668b9b55ec8d6, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 3c7b8f883a0a456408f0333838b00ebf, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
     - target: {fileID: 3712133913638909177, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: lockSnake
       value: 
@@ -13225,9 +13328,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: foodPrefab
+      value: 
+      objectReference: {fileID: 9190709065342253733, guid: a0a9c2c4f36482f4ca6a6b6ec7af1c18, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: foodGateData
       value: 
       objectReference: {fileID: 11400000, guid: c2f2d59d00b61324bb702afe97059613, type: 2}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: foodTextures.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: a1cd975e9e3dbdc41bdb2c64e133722b, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 71ea739dd82eadd4cb36fad7489e2b43, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 9e1b6ccd4958fca46af96395bdf07a5b, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: a5b5fd4b020b773478473d2bf58242e7, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 19ce8b8f1a757bc41b9ac35d63d05701, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2800000, guid: b618ab039b3388442b05f2c88ee8de4e, type: 3}
     - target: {fileID: 8145029753585700814, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_IsActive
       value: 1

@@ -1890,9 +1890,9 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: ac0604d067f66b44d97d5d58432e60a0, type: 2}
   snakeTextures: []
-  linkedSnake: {fileID: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 4331230705174226150}
+  linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 993324873226375825}
 --- !u!114 &8478336073975551006
@@ -1911,6 +1911,7 @@ MonoBehaviour:
   snake: {fileID: 3712133913638909177}
   moveSpeed: 20
   spacing: 1
+  isBodyPartsMoving: 0
 --- !u!1 &2170326358769049314
 GameObject:
   m_ObjectHideFlags: 0
@@ -2504,6 +2505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   isTimerStarted: 0
+  isTutorial: 1
 --- !u!1 &3508244199700991558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3426,8 +3428,22 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   offset: {x: -4, y: 0, z: -5}
   foodGateData: {fileID: 11400000, guid: c5f2c62885d45b842936f0a33874eb8a, type: 2}
-  gatePrefab: {fileID: 6109191688324245869, guid: 5024074d1979c25419afe0d3d1971e4d, type: 3}
-  foodPrefab: {fileID: 857446294435229854, guid: 53d485eb1dc6e9d42983510ac68770b6, type: 3}
+  gatePrefab: {fileID: 179156526854854013, guid: 35bddbdd6cfabe444a2bd75f43d36af7, type: 3}
+  foodPrefab: {fileID: 9190709065342253733, guid: a0a9c2c4f36482f4ca6a6b6ec7af1c18, type: 3}
+  gateTextures:
+  - {fileID: 2800000, guid: c4572779885ad5a4488343014b0828fb, type: 3}
+  - {fileID: 2800000, guid: 79236d7a4281d0840a46b8564acb5c3a, type: 3}
+  - {fileID: 2800000, guid: be600f7f7b5639d4899fc36f6e769dd9, type: 3}
+  - {fileID: 2800000, guid: 43027cf3e72d93e4fbd9809a1fc960a4, type: 3}
+  - {fileID: 2800000, guid: 14a5a68f34c82e14f90ebacb0e418433, type: 3}
+  - {fileID: 2800000, guid: 25f42cd9e4e26374bbe49c61920d4f7f, type: 3}
+  foodTextures:
+  - {fileID: 2800000, guid: a1cd975e9e3dbdc41bdb2c64e133722b, type: 3}
+  - {fileID: 2800000, guid: 71ea739dd82eadd4cb36fad7489e2b43, type: 3}
+  - {fileID: 2800000, guid: 9e1b6ccd4958fca46af96395bdf07a5b, type: 3}
+  - {fileID: 2800000, guid: a5b5fd4b020b773478473d2bf58242e7, type: 3}
+  - {fileID: 2800000, guid: 19ce8b8f1a757bc41b9ac35d63d05701, type: 3}
+  - {fileID: 2800000, guid: b618ab039b3388442b05f2c88ee8de4e, type: 3}
 --- !u!1 &5089163197439049161
 GameObject:
   m_ObjectHideFlags: 0
@@ -3745,7 +3761,6 @@ Transform:
   - {fileID: 5319527221092655919}
   - {fileID: 3463065834589371109}
   - {fileID: 1163690881184287552}
-  - {fileID: 7674906816348305332}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5956062343907318752
@@ -4044,9 +4059,9 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: 0c3102cde9d213c4c9241951ebfc642d, type: 2}
   snakeTextures: []
-  linkedSnake: {fileID: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 0}
+  linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
 --- !u!114 &1685985055154324140
@@ -4065,6 +4080,7 @@ MonoBehaviour:
   snake: {fileID: 365177347437027914}
   moveSpeed: 20
   spacing: 1
+  isBodyPartsMoving: 0
 --- !u!1 &6274272580975094509
 GameObject:
   m_ObjectHideFlags: 0
@@ -4617,9 +4633,9 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: 844e5a0d61ec4e84fa3cb9f77b66094b, type: 2}
   snakeTextures: []
-  linkedSnake: {fileID: 6131922696413135430}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 0}
+  linkedSnake: {fileID: 6131922696413135430}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
 --- !u!114 &650811276560247005
@@ -4638,6 +4654,7 @@ MonoBehaviour:
   snake: {fileID: 5962085630940939202}
   moveSpeed: 20
   spacing: 1
+  isBodyPartsMoving: 0
 --- !u!1 &6658850370477808180
 GameObject:
   m_ObjectHideFlags: 0
@@ -5693,9 +5710,9 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: 11e45dfff75b9ab44a0870ba68775bcf, type: 2}
   snakeTextures: []
-  linkedSnake: {fileID: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 0}
+  linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
 --- !u!114 &5021733511712960321
@@ -5714,6 +5731,7 @@ MonoBehaviour:
   snake: {fileID: 3685173588606037135}
   moveSpeed: 20
   spacing: 1
+  isBodyPartsMoving: 0
 --- !u!1 &8318908371610794012
 GameObject:
   m_ObjectHideFlags: 0
@@ -5903,9 +5921,9 @@ MonoBehaviour:
   gridTiles: {fileID: 5781807519056217605}
   snakeData: {fileID: 11400000, guid: fb171d009aee6b74dbc0a08cf4b4dc0e, type: 2}
   snakeTextures: []
-  linkedSnake: {fileID: 0}
   offset: {x: -4, y: 0, z: -5}
   lockSnake: {fileID: 0}
+  linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 6320339515585084682}
   keyImagePrefab: {fileID: 0}
 --- !u!114 &3822414432938107627
@@ -5924,6 +5942,7 @@ MonoBehaviour:
   snake: {fileID: 4331230705174226150}
   moveSpeed: 20
   spacing: 1
+  isBodyPartsMoving: 0
 --- !u!1 &8456694476309161543
 GameObject:
   m_ObjectHideFlags: 0
@@ -10716,69 +10735,6 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489470461532594357, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
   m_PrefabInstance: {fileID: 7728426150536316006}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &7856536608560336991
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 8277801315839761169}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.87609005
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3.17
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -5.65806
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-      propertyPath: m_Name
-      value: oji glux
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: -840777845830954692, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
---- !u!4 &7674906816348305332 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 71ab2fcec121ea349829c68545a2f826, type: 3}
-  m_PrefabInstance: {fileID: 7856536608560336991}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7907414674386276350
 PrefabInstance:

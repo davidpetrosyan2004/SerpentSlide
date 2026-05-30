@@ -19,7 +19,7 @@ public class Gate : CellObject
         {
             Debug.Log("Snake entered the gate");
             var snakeControler = other.GetComponentInParent<SnakeControler>();
-            if (snakeControler.IsSnakeFilled()) {
+            if (snakeControler.IsSnakeFilled() && snakeControler.snake.color == color ) {
                 if (snakeControler.snake.linkedSnake != null)
                 {
                     Debug.Log("Linked Snake Found");
@@ -60,7 +60,7 @@ public class Gate : CellObject
     {
         var puff = Instantiate(gatePuffEffect, transform.position, Quaternion.identity);
         var renderer = puff.GetComponent<ParticleSystemRenderer>();
-        renderer.material.color = color;
+        renderer.material.SetTexture("_MainTex", texture);
 
         puff.Play();
     }

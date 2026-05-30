@@ -7102,12 +7102,21 @@ MonoBehaviour:
   tailPrefab: {fileID: 4328514388940961773, guid: a37d0ae83ba46f2458dd3d4aafe25150, type: 3}
   gridTiles: {fileID: 1243574827}
   snakeData: {fileID: 11400000, guid: edea25f704fa2da40b205c9606cfca68, type: 2}
-  snakeTextures: []
+  snakeTextures:
+  - {fileID: 2800000, guid: 27403257218abc6428653c6799387e81, type: 3}
+  - {fileID: 2800000, guid: 0de9e772bffdef144b39151cf180abbf, type: 3}
+  - {fileID: 2800000, guid: f97b363ecabeca64bb49ba71e27bd6fc, type: 3}
+  - {fileID: 2800000, guid: 71d6a32b57e743a4698668b9b55ec8d6, type: 3}
+  - {fileID: 2800000, guid: 3c7b8f883a0a456408f0333838b00ebf, type: 3}
+  - {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
+  - {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -7, y: 0, z: 0}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!1 &807863107
 GameObject:
   m_ObjectHideFlags: 0
@@ -18582,12 +18591,21 @@ MonoBehaviour:
   tailPrefab: {fileID: 4328514388940961773, guid: a37d0ae83ba46f2458dd3d4aafe25150, type: 3}
   gridTiles: {fileID: 1243574827}
   snakeData: {fileID: 11400000, guid: bad070caa930b5c4591c1fc444a70f0b, type: 2}
-  snakeTextures: []
+  snakeTextures:
+  - {fileID: 2800000, guid: 27403257218abc6428653c6799387e81, type: 3}
+  - {fileID: 2800000, guid: 0de9e772bffdef144b39151cf180abbf, type: 3}
+  - {fileID: 2800000, guid: f97b363ecabeca64bb49ba71e27bd6fc, type: 3}
+  - {fileID: 2800000, guid: 71d6a32b57e743a4698668b9b55ec8d6, type: 3}
+  - {fileID: 2800000, guid: 3c7b8f883a0a456408f0333838b00ebf, type: 3}
+  - {fileID: 2800000, guid: 6aa27383a444933459f3bcb5ec4319c1, type: 3}
+  - {fileID: 2800000, guid: b9eb0bad56843e4499259e505a05e6e7, type: 3}
+  color: {r: 0, g: 0, b: 0, a: 0}
   offset: {x: -7, y: 0, z: 0}
   lockSnake: {fileID: 0}
   linkedSnake: {fileID: 0}
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
+  isTutorial: 0
 --- !u!4 &1850986012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489470461532594357, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
@@ -21514,6 +21532,38 @@ PrefabInstance:
       propertyPath: tailPrefab
       value: 
       objectReference: {fileID: 4328514388940961773, guid: a37d0ae83ba46f2458dd3d4aafe25150, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: snakeTextures.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: c53c6540fb799024ab697a5ae3079256, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 0de9e772bffdef144b39151cf180abbf, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: f97b363ecabeca64bb49ba71e27bd6fc, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 71d6a32b57e743a4698668b9b55ec8d6, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 3c7b8f883a0a456408f0333838b00ebf, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 78eab14ee8c103440a68751ca2ef032f, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'snakeTextures.Array.data[6]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 929816b3a0e43154ab1295a4aed66da2, type: 3}
     - target: {fileID: 3712133913638909177, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: lockSnake
       value: 
@@ -21540,15 +21590,43 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1103.102
+      value: -1103.1
       objectReference: {fileID: 0}
     - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.383
+      value: 12.98
       objectReference: {fileID: 0}
     - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1083.94
+      value: -1080.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7420329
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.6703628
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.0008515975
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.00058978185
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 84.189
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -1.163
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -1.142
       objectReference: {fileID: 0}
     - target: {fileID: 5893019771737243333, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_Name
@@ -22170,6 +22248,10 @@ PrefabInstance:
       propertyPath: s_Time
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6673134709888655510, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: isTutorial
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: offset.x
       value: -7
@@ -22179,9 +22261,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: foodPrefab
+      value: 
+      objectReference: {fileID: 9190709065342253733, guid: a0a9c2c4f36482f4ca6a6b6ec7af1c18, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: foodGateData
       value: 
       objectReference: {fileID: 11400000, guid: 73601e9ea9081d844a6a4af0d7aed230, type: 2}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: foodTextures.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2800000, guid: a1cd975e9e3dbdc41bdb2c64e133722b, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 71ea739dd82eadd4cb36fad7489e2b43, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 9e1b6ccd4958fca46af96395bdf07a5b, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[3]'
+      value: 
+      objectReference: {fileID: 2800000, guid: a5b5fd4b020b773478473d2bf58242e7, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[4]'
+      value: 
+      objectReference: {fileID: 2800000, guid: 19ce8b8f1a757bc41b9ac35d63d05701, type: 3}
+    - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: 'foodTextures.Array.data[5]'
+      value: 
+      objectReference: {fileID: 2800000, guid: b618ab039b3388442b05f2c88ee8de4e, type: 3}
     - target: {fileID: 7030849416983598762, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_text
       value: 'Level 3

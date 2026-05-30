@@ -5,17 +5,21 @@ public class SnakePart : MonoBehaviour
     public SkinnedMeshRenderer partMesh;
     [SerializeField] private ParticleSystem colorChangeEffect;
 
+    public Texture texture { get; set; }
     public Color color { get; set; }
-
-    public void SetColor(Color newColor)
+    //private void Awake()
+    //{
+    //    partMesh.material.renderQueue = 3001;
+    //}
+    public void SetColor(Texture newTexture)
     {
-        color = newColor;
-        partMesh.material.color = newColor;
+        texture = newTexture;
+        partMesh.material.SetTexture("_BaseMap", newTexture);
 
         var effect = Instantiate(colorChangeEffect, transform.position, Quaternion.identity, transform);
 
         var renderer = effect.GetComponent<ParticleSystemRenderer>();
-        renderer.material.color = newColor;
+        renderer.material.SetTexture("_MainTex", newTexture);
 
         effect.Play();
     }

@@ -112,7 +112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8554178599759437938}
-  - component: {fileID: 8436961332309497228}
+  - component: {fileID: 6161981083637970169}
   m_Layer: 0
   m_Name: Finger
   m_TagString: Untagged
@@ -137,7 +137,7 @@ Transform:
   - {fileID: 6287601180163787981}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8436961332309497228
+--- !u!114 &6161981083637970169
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

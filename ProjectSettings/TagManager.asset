@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Head
   - Tail
+  - Ice
   layers:
   - Default
   - TransparentFX

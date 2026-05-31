@@ -53,14 +53,18 @@ public class GridTiles : MonoBehaviour
                 bool isBlocked = false;
 
                 if (Physics.Raycast(
-                    worldPos - new Vector3(0, 0.5f, 0),
+                    worldPos - new Vector3(0, 1f, 0),
                     Vector3.up,
                     out hit,
                     20f
                 ))
                 {
                     isBlocked = true;
-                    if (hit.collider.TryGetComponent<CellObject>(out var cellObject))
+                    if (hit.collider.CompareTag("Ice"))
+                    {
+                        isBlocked = true;
+                    }
+                    else if (hit.collider.TryGetComponent<CellObject>(out var cellObject))
                     {
                         if (cellObject.color == Tag)
                         {
@@ -69,7 +73,7 @@ public class GridTiles : MonoBehaviour
                     }
                 }
                 bool walkable = !isBlocked && tile != null;
-                Debug.DrawRay(worldPos, Vector3.up * 20f, walkable ? Color.green : Color.red,2f);
+                Debug.DrawRay(worldPos - new Vector3(0, 0.5f, 0), Vector3.up * 20f, walkable ? Color.green : Color.red,2f);
 
                 gridMap[pos].walkable = walkable;
             }

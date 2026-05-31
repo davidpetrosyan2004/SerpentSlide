@@ -37,15 +37,8 @@ public class ChainIce : MonoBehaviour
         AudioManager.Instance.PlaySound("IceBreak");
         if (count <= 0)
         {
-            IceDisapear();
+            gameObject.SetActive(false);
         }
     }
 
-    public void IceDisapear()
-    {
-        foreach(var ice in ices)
-        {
-            ice.SetActive(false);
-        }
-    }
 }

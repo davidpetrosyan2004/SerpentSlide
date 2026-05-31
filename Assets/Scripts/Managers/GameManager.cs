@@ -32,7 +32,6 @@ public class GameManager : MonoBehaviour
     public void RemoveGateCount()
     {
         gateCount--;
-        Debug.Log("Gate Count: " + gateCount);
         if (gateCount <= 0)
         {
             Debug.Log("Game Won!");

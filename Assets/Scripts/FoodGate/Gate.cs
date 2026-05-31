@@ -24,27 +24,31 @@ public class Gate : CellObject
                 {
                     Debug.Log("Linked Snake Found");
 
-                    snakeControler.GetComponent<Snake>().enabled = true;
+                    //snakeControler.GetComponent<Snake>().enabled = true;
 
-                    Collider[] cols = snakeControler.snake.linkedSnake.transform.GetChild(0).GetComponentsInChildren<Collider>();
+                    //Collider[] cols = snakeControler.snake.linkedSnake.transform.GetChild(0).GetComponentsInChildren<Collider>();
 
-                    foreach (var col in cols)
+                    //foreach (var col in cols)
+                    //{
+                    //    col.enabled = true;
+                    //}
+
+                    //Collider[] cols2 = snakeControler.snake.linkedSnake.transform.GetComponentsInChildren<Collider>();
+
+                    //foreach (var col in cols2)
+                    //{
+                    //    col.enabled = true;
+                    //}
+
+                    //MeshRenderer[] renderers = snakeControler.snake.linkedSnake.transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
+
+                    //foreach (var r in renderers)
+                    //{
+                    //    r.enabled = true;
+                    //}
+                    foreach (Transform child in snakeControler.snake.linkedSnake.transform)
                     {
-                        col.enabled = true;
-                    }
-
-                    Collider[] cols2 = snakeControler.snake.linkedSnake.transform.GetComponentsInChildren<Collider>();
-
-                    foreach (var col in cols2)
-                    {
-                        col.enabled = true;
-                    }
-
-                    MeshRenderer[] renderers = snakeControler.snake.linkedSnake.transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
-
-                    foreach (var r in renderers)
-                    {
-                        r.enabled = true;
+                        child.gameObject.SetActive(true);
                     }
                     snakeControler.snake.linkedSnake.GetComponent<SnakeControler>().isLinked = false;
                     snakeControler.snake.linkedSnake = null;

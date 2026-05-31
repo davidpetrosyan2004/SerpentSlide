@@ -9,13 +9,13 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: 0df287d6d0d4bce45be4171d56bdd4db
   - enabled: 1
-    path: Assets/LVLDesign/Level 1.unity
+    path: Assets/Scenes/Level 1.unity
     guid: a352306ddc5f6b44eaef59f1752c5f41
   - enabled: 1
-    path: Assets/LVLDesign/Level 2.unity
+    path: Assets/Scenes/Level 2.unity
     guid: 95eebfdf2ab1d5742a1ea727d9296bfa
   - enabled: 1
-    path: Assets/LVLDesign/Level 3.unity
+    path: Assets/Scenes/Level 3.unity
     guid: 3031c43b19ddeb442aa75d1268110c75
   - enabled: 1
     path: Assets/Scenes/Level Test 1.unity

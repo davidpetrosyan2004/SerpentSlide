@@ -77,7 +77,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
         {
             if (snake.linkedSnake != null)
             {
-                snake.linkedSnake.GetComponent<SnakeControler>().OnSlideStart(snake.linkedSnake.GetComponent<Snake>().HeadPrefab.transform.GetChild(0).GetComponent<Collider>(), worldPosition);
+                snake.linkedSnake.GetComponent<SnakeControler>().OnSlideStart(snake.linkedSnake.GetComponent<Snake>().HeadPrefab.transform.GetComponent<Collider>(), worldPosition);
             }
             snake.GetComponent<Snake>().isReversed = false;
             snake.BodyParts.Remove(snake.HeadPrefab);
@@ -159,6 +159,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
                     {
                         snake.lockSnake.isLocked = false;
                         snake.isKey = false;
+                        AudioManager.Instance.PlaySound("LockOpen");
                         Destroy(snake.keyImagePrefab);
                         Destroy(snake.lockSnake.lockImagePrefab);
                     }
@@ -286,7 +287,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
     private void MoveBodyParts()
     {
         int index = 0;
-        Transform previous = null;
+        Transform previous = slideObject;
         foreach (var bodyPart in snake.BodyParts)
         {
             Vector3 point = positionsHistory[Mathf.Min(index * spacing, positionsHistory.Count - 1)];

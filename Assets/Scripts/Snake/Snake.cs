@@ -35,7 +35,8 @@ public class Snake : MonoBehaviour
     public GameObject keyImagePrefab = null;
 
     public bool isTutorial;
-
+    public Transform twoSkinnedSphere = null;
+    public Transform skinnedShpere;
     private void Awake()
     {
         for (int i = 0; i < snakeData.rows; i++)
@@ -48,7 +49,6 @@ public class Snake : MonoBehaviour
                 {
                     HeadPrefab = Instantiate(headPrefab, spawnPos, Quaternion.Euler(0, cell.rotation, 0), transform);
                     texture = GetTexture(cell.color);
-                    Debug.Log(texture);
                     var HeadScript = HeadPrefab.GetComponent<SnakePart>();
                     HeadScript.texture = texture;
                     HeadScript.partMesh.material.SetTexture("_BaseMap", texture);
@@ -129,24 +129,38 @@ public class Snake : MonoBehaviour
             linkedSnake.GetComponent<SnakeControler>().isLinked = true;
             var snakeControler = linkedSnake.GetComponent<SnakeControler>();
 
-            Collider[] cols = linkedSnake.transform.GetChild(0).GetComponentsInChildren<Collider>();
+            //Collider[] cols = linkedSnake.transform.GetChild(0).GetComponentsInChildren<Collider>();
 
-            foreach (var col in cols)
+            //foreach (var col in cols)
+            //{
+            //    col.enabled = false;
+            //}
+            //Collider[] cols2 = linkedSnake.transform.GetComponentsInChildren<Collider>();
+
+            //foreach (var col in cols2)
+            //{
+            //    col.enabled = false;
+            //}
+
+            //SkinnedMeshRenderer[] renderers = linkedSnake.transform.GetComponentsInChildren<SkinnedMeshRenderer>();
+            //foreach (var r in renderers)
+            //{
+            //    r.enabled = false;
+            //}
+            //MeshRenderer[] renderers2 = linkedSnake.transform.GetComponentsInChildren<MeshRenderer>();
+            //foreach (var r in renderers2)
+            //{
+            //    r.enabled = false;
+            //}
+            foreach (Transform child in linkedSnake.transform)
             {
-                col.enabled = false;
+                child.gameObject.SetActive(false);
             }
-            Collider[] cols2 = linkedSnake.transform.GetComponentsInChildren<Collider>();
 
-            foreach (var col in cols2)
-            {
-                col.enabled = false;
-            }
-
-            MeshRenderer[] renderers = linkedSnake.transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
-
-            foreach (var r in renderers)
-            {
-                r.enabled = false;
+            if (twoSkinnedSphere != null)
+            {   
+                skinnedShpere = Instantiate(twoSkinnedSphere, HeadPrefab.position + new Vector3(0, -0.17f, 0) + HeadPrefab.right * 0.17f, Quaternion.identity, HeadPrefab);
+                skinnedShpere.GetComponent<MeshRenderer>().material.color = linkedSnake.GetComponent<Snake>().color;
             }
         }
     }
@@ -186,7 +200,6 @@ public class Snake : MonoBehaviour
             {
                 if (i == BodyParts.Count - 1)
                 {
-                    Debug.Log("Colored Tail not reversed");
                     Debug.Log(texture);
                     BodyParts[i].GetComponent<SnakePart>().SetColor(texture);
                     coloredBodyPartsCount--;
@@ -194,7 +207,6 @@ public class Snake : MonoBehaviour
                 }
                 else if (BodyParts[i].GetComponent<BodyPart>().texture != texture)
                 {
-                    Debug.Log("Colored Body not reversed");
                     Debug.Log(texture);
                     BodyParts[i].GetComponent<BodyPart>().SetColor(texture);
                     coloredBodyPartsCount--;
@@ -226,10 +238,17 @@ public class Snake : MonoBehaviour
 
     public void InitSpriteObject(GameObject sprite)
     {
-        sprite.transform.rotation = Quaternion.Euler(90, 0, 0);
         sprite.transform.position = HeadPrefab.position + new Vector3(0, 0.4f, 0);
         sprite.transform.SetParent(HeadPrefab.transform);
-        sprite.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        sprite.transform.rotation = Quaternion.Euler(90, 180, 0);
+        if (isLocked)
+        {
+            sprite.transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+        }
+        else
+        {
+            sprite.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
+        }
         sprite.transform.DOPunchScale(
             new Vector3(0.1f, 0.1f, 0.1f),
             0.3f,

@@ -40,7 +40,7 @@ public class SnakeControler : MonoBehaviour, ISlidable
             {
                 GameManager.Instance.OnFingerTap?.Invoke();
             }
-            return;
+            else return;
         }
         if (!GameManager.Instance.isTimerStarted)
         {

@@ -33,7 +33,7 @@ public class Timer : MonoBehaviour
     private void Start()
     {
         time = m_Time * 60 + s_Time;
-        leftDigit.text = m_Time.ToString() + ":";
+        leftDigit.text = m_Time.ToString() + ": ";
         if (s_Time / 10 != 0)
         {
             rightDigit.text = (s_Time-1).ToString();

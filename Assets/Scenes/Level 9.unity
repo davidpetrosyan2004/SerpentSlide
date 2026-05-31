@@ -9790,6 +9790,8 @@ MonoBehaviour:
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
   isTutorial: 0
+  twoSkinnedSphere: {fileID: 0}
+  skinnedShpere: {fileID: 0}
 --- !u!1001 &802151096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16278,6 +16280,8 @@ MonoBehaviour:
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
   isTutorial: 0
+  twoSkinnedSphere: {fileID: 0}
+  skinnedShpere: {fileID: 0}
 --- !u!1001 &1222990947
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25281,6 +25285,8 @@ MonoBehaviour:
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
   isTutorial: 0
+  twoSkinnedSphere: {fileID: 8779685612120119069, guid: 01f3bd290ee95bc499bf06aac8ed6919, type: 3}
+  skinnedShpere: {fileID: 0}
 --- !u!4 &1850986012 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4489470461532594357, guid: aab6be98aab5b1e44b44cbc8bc8f6711, type: 3}
@@ -27093,6 +27099,8 @@ MonoBehaviour:
   lockImagePrefab: {fileID: 0}
   keyImagePrefab: {fileID: 0}
   isTutorial: 0
+  twoSkinnedSphere: {fileID: 0}
+  skinnedShpere: {fileID: 0}
 --- !u!1001 &2016605993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28559,6 +28567,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 799405919}
     - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: twoSkinnedSphere
+      value: 
+      objectReference: {fileID: 8779685612120119069, guid: 01f3bd290ee95bc499bf06aac8ed6919, type: 3}
+    - target: {fileID: 3685173588606037135, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: snakeTextures.Array.size
       value: 7
       objectReference: {fileID: 0}
@@ -28620,11 +28632,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.73
+      value: 14.11
       objectReference: {fileID: 0}
     - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1082.09
+      value: -1079.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.75037575
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.66101044
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.00036076969
+      objectReference: {fileID: 0}
+    - target: {fileID: 5805347687883668794, guid: b8d44315de767c048809abaa9747e010, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.0011491906
       objectReference: {fileID: 0}
     - target: {fileID: 5893019771737243333, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_Name

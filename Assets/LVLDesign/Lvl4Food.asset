@@ -18,13 +18,13 @@ MonoBehaviour:
   - column:
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 5
+      colorType: 4
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 5
+      colorType: 4
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 5
+      colorType: 4
     - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 0
@@ -39,7 +39,7 @@ MonoBehaviour:
       colorType: 0
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
+      colorType: 6
   - column:
     - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -52,10 +52,10 @@ MonoBehaviour:
       colorType: 0
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 5
+      colorType: 4
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 5
+      colorType: 4
     - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
       colorType: 0
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
+      colorType: 6
   - column:
     - type: 2
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -83,13 +83,13 @@ MonoBehaviour:
       colorType: 0
     - type: 2
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 5
+      colorType: 4
     - type: 0
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
       colorType: 0
     - type: 2
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-      colorType: 1
+      colorType: 6
   - column:
     - type: 1
       color: {r: 0.5, g: 0.5, b: 0.5, a: 1}

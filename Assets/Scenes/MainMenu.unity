@@ -1689,8 +1689,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 25e2f66f47f3e944dbb75e49b3eece81, type: 2}
-  m_sharedMaterial: {fileID: 1569157458010038791, guid: 25e2f66f47f3e944dbb75e49b3eece81, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3559a3623b264314885cdd6067b9f260, type: 2}
+  m_sharedMaterial: {fileID: -7008957233728573412, guid: 3559a3623b264314885cdd6067b9f260, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1984,6 +1984,11 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
     clip: {fileID: 8300000, guid: 986833738aeb7fd47b3e822cbba4969e, type: 3}
+  - name: IceBreak
+    volume: 0.5
+    loop: 0
+    source: {fileID: 0}
+    clip: {fileID: 8300000, guid: 32aa0f1bc3fa3df44bfc03e0d075f77e, type: 3}
   isHaptics: 1
 --- !u!4 &1291290656
 Transform:
@@ -2548,8 +2553,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 25e2f66f47f3e944dbb75e49b3eece81, type: 2}
-  m_sharedMaterial: {fileID: 1569157458010038791, guid: 25e2f66f47f3e944dbb75e49b3eece81, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3559a3623b264314885cdd6067b9f260, type: 2}
+  m_sharedMaterial: {fileID: -7008957233728573412, guid: 3559a3623b264314885cdd6067b9f260, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

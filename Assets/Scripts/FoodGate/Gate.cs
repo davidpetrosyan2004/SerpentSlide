@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Linq;
 public class Gate : CellObject
 {
     [SerializeField] private ParticleSystem gatePuffEffect;
@@ -22,30 +22,8 @@ public class Gate : CellObject
             if (snakeControler.IsSnakeFilled() && snakeControler.snake.color == color ) {
                 if (snakeControler.snake.linkedSnake != null)
                 {
+
                     Debug.Log("Linked Snake Found");
-
-                    //snakeControler.GetComponent<Snake>().enabled = true;
-
-                    //Collider[] cols = snakeControler.snake.linkedSnake.transform.GetChild(0).GetComponentsInChildren<Collider>();
-
-                    //foreach (var col in cols)
-                    //{
-                    //    col.enabled = true;
-                    //}
-
-                    //Collider[] cols2 = snakeControler.snake.linkedSnake.transform.GetComponentsInChildren<Collider>();
-
-                    //foreach (var col in cols2)
-                    //{
-                    //    col.enabled = true;
-                    //}
-
-                    //MeshRenderer[] renderers = snakeControler.snake.linkedSnake.transform.GetChild(0).GetComponentsInChildren<MeshRenderer>();
-
-                    //foreach (var r in renderers)
-                    //{
-                    //    r.enabled = true;
-                    //}
                     foreach (Transform child in snakeControler.snake.linkedSnake.transform)
                     {
                         child.gameObject.SetActive(true);
@@ -53,16 +31,18 @@ public class Gate : CellObject
                     snakeControler.snake.linkedSnake.GetComponent<SnakeControler>().isLinked = false;
                     snakeControler.snake.linkedSnake = null;
                 }
+                snakeControler.snake.BodyParts[^1].GetComponent<Collider>().enabled = false;
                 snakeControler.DivePositions = divePositions;
                 snakeControler.gate = this;
                 snakeControler.isDiving = true;
+                GameManager.Instance.OnSnakeDive?.Invoke();
             }
         }
     }
 
     public void OnBodyPartDiveEffect()
     {
-        var puff = Instantiate(gatePuffEffect, transform.position, Quaternion.identity);
+        var puff = Instantiate(gatePuffEffect, transform.position, Quaternion.identity, transform);
         var renderer = puff.GetComponent<ParticleSystemRenderer>();
         renderer.material.SetTexture("_MainTex", texture);
 

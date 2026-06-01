@@ -43,7 +43,9 @@ public class Snake : MonoBehaviour
         {
             for (int j = 0; j < snakeData.columns; j++)
             {
-                var spawnPos = gridTiles.GetTileWorldPosition(new Vector3Int(i, 0, j) + offset).Value.Item1;
+                var spawnPosValue = gridTiles.GetTileWorldPosition(new Vector3Int(i, 0, j) + offset);
+                if (spawnPosValue == null) continue;
+                var spawnPos = spawnPosValue.Value.Item1;
                 var cell = snakeData.board[i].column[j];
                 if (snakeData.board[i].column[j].type == SnakeData.CellType.H)
                 {

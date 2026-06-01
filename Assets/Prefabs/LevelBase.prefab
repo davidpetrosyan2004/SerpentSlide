@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneButtonBinder
   sceneName: 
   button: {fileID: 7967532544270169363}
-  buttonType: 1
+  buttonType: 3
 --- !u!1 &40934242593820983
 GameObject:
   m_ObjectHideFlags: 0
@@ -2434,6 +2434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   isTimerStarted: 0
   isTutorial: 0
+  infoPanel: {fileID: 0}
 --- !u!1 &3508244199700991558
 GameObject:
   m_ObjectHideFlags: 0

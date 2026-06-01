@@ -29317,7 +29317,7 @@ PrefabInstance:
     - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: foodGateData
       value: 
-      objectReference: {fileID: 11400000, guid: f455a48af76df274a9f363a12fe6dff0, type: 2}
+      objectReference: {fileID: 11400000, guid: 576209eabed24224d895ce96606f4da9, type: 2}
     - target: {fileID: 7030849416983598762, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_text
       value: 'Level 9

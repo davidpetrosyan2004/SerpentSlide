@@ -10,18 +10,14 @@ public class ChainIce : MonoBehaviour
     [SerializeField] private ParticleSystem effectIce;
     [SerializeField] private int count;
 
-    private void OnEnable()
-    {
-        GameManager.Instance.OnSnakeDive += IceCountDecrease;
-    }
-    private void OnDisable()
-    {
-        GameManager.Instance.OnSnakeDive -= IceCountDecrease;
-    }
-
     private void Start()
     {
         iceCount.text = count.ToString();
+        GameManager.Instance.OnSnakeDive += IceCountDecrease;
+    }
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnSnakeDive -= IceCountDecrease;
     }
 
     public void IceCountDecrease()
@@ -37,7 +33,7 @@ public class ChainIce : MonoBehaviour
         AudioManager.Instance.PlaySound("IceBreak");
         if (count <= 0)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
     }
 

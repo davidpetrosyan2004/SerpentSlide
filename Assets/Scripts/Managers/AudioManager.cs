@@ -87,7 +87,11 @@ public class AudioManager : MonoBehaviour
             {
                 sound.source.volume = 0.8f;
             }
-            sound.source.volume = 0.5f;
+            else if(sound.name == "IceBreak")
+            {
+                sound.source.volume = 0.3f;
+            }
+            else sound.source.volume = 0.5f;
 
         }
     }

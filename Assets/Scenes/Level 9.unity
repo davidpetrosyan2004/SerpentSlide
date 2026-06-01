@@ -29300,11 +29300,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6610491074073317172, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: m_Time
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6610491074073317172, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: s_Time
-      value: 1
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 6830733043788223262, guid: b8d44315de767c048809abaa9747e010, type: 3}
       propertyPath: offset.x
